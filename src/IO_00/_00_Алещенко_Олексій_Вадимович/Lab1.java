@@ -40,6 +40,7 @@ public class Lab1 {
 
 //        j != 0; i != -C
 //        todo & vs. &&
+//        todo try/catch
         if (a <= -C && -C <= n || b <= 0 && 0 <= m) {
             System.out.println("Error division by zero!");
         } else {
