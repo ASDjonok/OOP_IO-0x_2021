@@ -2,7 +2,7 @@ package com.fastroof.lab2;
 
 import java.util.Random;
 
-public class Lab2_Main {
+public class Lab2Main {
     public static void main(String[] args) {
         /*
         0219
