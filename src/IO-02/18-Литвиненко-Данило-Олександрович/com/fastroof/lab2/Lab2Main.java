@@ -37,7 +37,7 @@ public class Lab2Main {
                     for (int k = 0; k < n1; k++) { // m2 == n1 (можна замінити)
                         C[i][j] += A[i][k] * B[k][j];
                     }
-                    System.out.print(C[i][j] + "\t");
+                    System.out.format("%5d", C[i][j]);
                     S += C[i][j];
                 }
                 System.out.println();
@@ -52,7 +52,7 @@ public class Lab2Main {
         for (int i = 0; i < matrix.length; i++) { // matrix.length -> m
             for (int j = 0; j < matrix[0].length; j++) { // matrix[0].length -> n
                 matrix[i][j] = (short)(random.nextInt(10) * (random.nextBoolean() ? 1 : -1)); // short [від -32 768 до 32 767], тому беремо значення поменше, щоб при типізації не втратити значення у майбутніх розрахунках
-                System.out.print(matrix[i][j] + "\t");
+                System.out.format("%3d",matrix[i][j]);
             }
             System.out.println();
         }
