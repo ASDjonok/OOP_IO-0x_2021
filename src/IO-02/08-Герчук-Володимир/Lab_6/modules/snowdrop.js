@@ -16,17 +16,6 @@ export default class Snowdrop extends Flower {
    * @param {Number} freshness level of freshness.
    */
   constructor(len, color, freshness) {
-    super(len, Snowdrop.getPrice(len), color, freshness);
-  }
-
-  /**
-   * Calculate a price for the snowdrop taking into account the length and coefficient.
-   * @param {Number} len
-   */
-  static getPrice(len) {
-    if (len < 1) {
-      throw new Error('Invalid length for Snowdrop');
-    }
-    return `${Snowdrop.#K * len}`;
+    super(len, Flower.getPrice(len, Snowdrop.#K), color, freshness);
   }
 }
