@@ -47,8 +47,7 @@ public class Lab4Main {
         }
         scanner.close();
 
-        for (Student st:
-             students) {
+        for (Student st: students) {
             System.out.println(st.toString());
         }
 
@@ -56,8 +55,7 @@ public class Lab4Main {
 
         students.sort(Comparator.comparingDouble(Student::getRatingScore));
 
-        for (Student st:
-                students) {
+        for (Student st: students) {
             System.out.println(st.toString());
         }
 
@@ -65,8 +63,7 @@ public class Lab4Main {
 
         students.sort(Comparator.comparingInt(Student::getSpecialtyNumber).reversed());
 
-        for (Student st:
-                students) {
+        for (Student st: students) {
             System.out.println(st.toString());
         }
 
