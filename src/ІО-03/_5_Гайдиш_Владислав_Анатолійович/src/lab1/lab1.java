@@ -36,13 +36,12 @@ public class lab1 {
 		if (C <= n && C >= a) {
 			System.out.print("Ділення на 0");
 			t = 1;
-		} else
+		} else {
 			for (char i = (char) a; i <= n; i++) {
 				for (char j = (char) b; j <= m; j++) {
 					S += ((double) (i * j) / (i - C));
 				}
 			}
-		if (t == 0) {
 			System.out.print(S);
 		}
 	}
