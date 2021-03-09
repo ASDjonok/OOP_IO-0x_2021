@@ -27,7 +27,7 @@ class Text {
 
   /**
    * Get text with replaced first and last words.
-   * @returns {String}
+   * @returns {String} string with replaced first and last words.
   */
   getFinalOutput() {
     const output = [];

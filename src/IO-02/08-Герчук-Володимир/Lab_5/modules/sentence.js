@@ -13,7 +13,6 @@ export default class Sentence {
    * @static
    */
   static punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '.split('') + ['...'];
-
   /**
    * Create a sentence.
    * @param {String} sentence
@@ -24,6 +23,8 @@ export default class Sentence {
   }
 
   #roll(sentence) {
+    console.log(sentence.match(/[\w']+|[.,!?;_ ]/g));
+
     sentence.match(/[\w']+|[.,!?;_ ]/g).forEach((el) => {
       if (Sentence.punctuation.includes(el)) {
         this.sentence.push(new Punctuation(el));
