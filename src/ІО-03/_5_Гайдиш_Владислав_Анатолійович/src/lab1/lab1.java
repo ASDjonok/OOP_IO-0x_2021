@@ -20,8 +20,6 @@ public class lab1 {
 		System.out.print("Задайте нижню межу b:");
 		int b = num.nextInt();
 		double S = 0;
-		final int C = 2;
-		int t = 0;
 
 		if (n < a) {
 			System.out.println("Введіть коректний n");
@@ -35,14 +33,12 @@ public class lab1 {
 		}
 		if (C <= n && C >= a) {
 			System.out.print("Ділення на 0");
-			t = 1;
-		} else
+		} else {
 			for (char i = (char) a; i <= n; i++) {
 				for (char j = (char) b; j <= m; j++) {
 					S += ((double) (i * j) / (i - C));
 				}
 			}
-		if (t == 0) {
 			System.out.print(S);
 		}
 	}
