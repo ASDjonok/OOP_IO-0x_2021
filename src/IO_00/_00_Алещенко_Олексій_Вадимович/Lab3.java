@@ -18,6 +18,23 @@ public class Lab3 {
         StringBuilder stringBuilder = new StringBuilder("A");
         stringBuilder.append("B");
         System.out.println("stringBuilder = " + stringBuilder);
+
+        StringBuffer stringBuffer = new StringBuffer("B");
+        stringBuffer.append("A");
+        System.out.println("stringBuffer = " + stringBuffer);
+
+        stringBuilder
+                .appendCodePoint(1)
+                .appendCodePoint(50);
+        System.out.println("stringBuilder = " + stringBuilder);
+
+        stringBuffer
+                .appendCodePoint(1)
+                .appendCodePoint(50);
+        System.out.println("stringBuffer = " + stringBuffer);
+
+        stringBuilder.toString().split(" ");
+        stringBuffer.toString().split(" ");
         /*String string = new String("Done!");
         String string1 = "Done!" + string;
         System.out.println(string);

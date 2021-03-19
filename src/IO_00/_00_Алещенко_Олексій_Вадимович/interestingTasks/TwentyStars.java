@@ -11,7 +11,7 @@ public class TwentyStars {
 //       == end test task
 */
         int n = 20;
-        for (int i = 0; i < n; n--) {
+        for (int i = 0; i < n; i--) {
             print("*");
         }
     }
