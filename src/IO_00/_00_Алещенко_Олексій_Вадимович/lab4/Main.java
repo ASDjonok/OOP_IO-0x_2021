@@ -1,6 +1,7 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab4;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +14,11 @@ public class Main {
                 new Car("Black", 1, BodyType.CROSSOVER),
                 new Car("White", 1, BodyType.CROSSOVER),
         };
-        Arrays.sort(cars);
+
+//        System.out.println(cars[0].compareTo(cars[1]));
+//        System.out.println(cars[0].compareTo("A"));
+
+        Arrays.sort(cars/*, Comparator.comparing(Car)*/);
 //        System.out.println(Arrays.toString(cars));
         for (int i = 0; i < cars.length; i++) {
             System.out.println(cars[i]);
