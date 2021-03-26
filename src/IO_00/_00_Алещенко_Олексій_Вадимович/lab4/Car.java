@@ -1,6 +1,6 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab4;
 
-public class Car {
+public /*abstract*/ class Car implements Comparable {
     private String color;
     private int paintLayerThickness;
     private BodyType bodyType;
@@ -16,6 +16,8 @@ public class Car {
         this.paintLayerThickness = 1;
         this.bodyType = BodyType.UNIVERSAL;
     }
+
+//    public abstract void myAbstractMethod();
 
     public void setColor(String color) {
         this.color = color;
@@ -36,6 +38,20 @@ public class Car {
 
     public int getPaintLayerThickness() {
         return paintLayerThickness;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "color='" + color + '\'' +
+                ", paintLayerThickness=" + paintLayerThickness +
+                ", bodyType=" + bodyType +
+                '}';
     }
 
     /*public void setPaintLayerThickness(int paintLayerThickness) {

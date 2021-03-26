@@ -14,7 +14,10 @@ public class Main {
                 new Car("White", 1, BodyType.CROSSOVER),
         };
         Arrays.sort(cars);
-        System.out.println(Arrays.toString(cars));
+//        System.out.println(Arrays.toString(cars));
+        for (int i = 0; i < cars.length; i++) {
+            System.out.println(cars[i]);
+        }
 
         /*Car car;
         car = new Car("Pink", 1, BodyType.CROSSOVER);
