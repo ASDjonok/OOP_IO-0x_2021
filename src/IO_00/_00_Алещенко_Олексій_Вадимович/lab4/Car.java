@@ -48,9 +48,26 @@ public /*abstract*/ class Car /*extends Object*/ implements Comparable<Car> {
     }*/
     @Override
     public int compareTo(Car car) {
-//        return /*this.*/getColor().compareTo(car.getColor());
+        int colorComparingResult = getColor().compareTo(car.getColor());
+        return /*this.*/colorComparingResult != 0
+                ? colorComparingResult
+                : -Integer.compare(getPaintLayerThickness(), car.getPaintLayerThickness());
+        /*return *//*this.*//*colorComparingResult != 0
+                ? colorComparingResult
+                : (
+                        getPaintLayerThickness() < car.getPaintLayerThickness()
+                                ? -1
+                                : (
+                                    getPaintLayerThickness() > car.getPaintLayerThickness()
+                                        ? 1
+                                        : 0
+                                )
+                );*/
+        /*return *//*this.*//*colorComparingResult != 0
+                ? colorComparingResult
+                : (getPaintLayerThickness() - car.getPaintLayerThickness());*/
 //        return -/*this.*/getColor().compareTo(car.getColor());
-        return car.getColor().compareTo(/*this.*/getColor());
+//        return car.getColor().compareTo(/*this.*/getColor());
     }
 
     @Override
