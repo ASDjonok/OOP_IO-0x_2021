@@ -9,15 +9,7 @@ public class Lab4Main {
         /*
         0219
         C11 = 10 -> Визначити клас студент, який складається як мінімум з 5-и полів.
-
-        Створити клас із виконавчим методом, в якому створити масив з об’єктів класу визначеному варіантом (C11).
-        Відсортувати масив, за одним з полів, за зростанням, а за іншим, за спаданням використавши при цьому
-        стандартні засоби сортування. Всі змінні повинні бути описані та значення їх задані у виконавчому методі. Код
-        повинен відповідати стандартам JCC та бути детально задокументований.
         */
-
-        File file = new File("./src/com/fastroof/lab4/rating.txt");
-        Scanner scanner = new Scanner(file);
 
         String university = "КПІ"; // Igor Sikorsky Kyiv Polytechnic Institute
         String faculty = "ФІОТ"; // Faculty of Informatics and Computer Technologies
@@ -25,29 +17,21 @@ public class Lab4Main {
 
         ArrayList<Student> students = new ArrayList<>();
 
+        File file = new File("./src/com/fastroof/lab4/rating.txt");
+        Scanner scanner = new Scanner(file);
+
+        String[] tmp;
         while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
+            tmp = scanner.nextLine().split(" ");
 
-            String lastName = line.substring(0, line.indexOf(" "));
-            line = line.substring(line.indexOf(" ")+1);
+            // lastname 0, firstname 1, middlename 2, SpecialtyNumber 3, RatingScore 4
 
-            String firstName = line.substring(0, line.indexOf(" "));
-            line = line.substring(line.indexOf(" ")+1);
-
-            String middleName = line.substring(0, line.indexOf(" "));
-            line = line.substring(line.indexOf(" ")+1);
-
-            int specialtyNumber = Integer.parseInt(line.substring(0, line.indexOf(" ")));
-            line = line.substring(line.indexOf(" ")+1);
-
-            double ratingScore = Double.parseDouble(line);
-
-            students.add(new Student(firstName, lastName, middleName, university, faculty, specialtyNumber,
-                    courseNumber, ratingScore));
+            students.add(new Student(tmp[1], tmp[0], tmp[2], university, faculty, Integer.parseInt(tmp[3]),
+                    courseNumber, Double.parseDouble(tmp[4])));
         }
         scanner.close();
 
-        for (Student st: students) {
+        for (Student st : students) {
             System.out.println(st.toString());
         }
 
@@ -55,7 +39,7 @@ public class Lab4Main {
 
         students.sort(Comparator.comparingDouble(Student::getRatingScore));
 
-        for (Student st: students) {
+        for (Student st : students) {
             System.out.println(st.toString());
         }
 
@@ -63,7 +47,7 @@ public class Lab4Main {
 
         students.sort(Comparator.comparingInt(Student::getSpecialtyNumber).reversed());
 
-        for (Student st: students) {
+        for (Student st : students) {
             System.out.println(st.toString());
         }
 

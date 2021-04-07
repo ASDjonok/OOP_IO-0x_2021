@@ -17,7 +17,7 @@ public class Lab2Main {
         // Для множення A[m1xn1] на B[m2xn2] потрібно щоб n1 == m2
         if (n1 != m2) {
             System.out.println("Так як не виконується умова (n1 = m2) для множення матриці A на B, то подальші дії з матрицями неможливі і результуюча матриця не існує.");
-        }  else {
+        } else {
 
             short[][] A = new short[m1][n1];
             short[][] B = new short[m2][n2];
@@ -45,6 +45,7 @@ public class Lab2Main {
             // Виводимо середнє значення елементів матриці
             System.out.println("Середнє значення елементів матриці C = " +  Math.round(S/(m1*n2)));
         }
+        
     }
 
     public static void generateAndPrintMatrix(short[][] matrix){
