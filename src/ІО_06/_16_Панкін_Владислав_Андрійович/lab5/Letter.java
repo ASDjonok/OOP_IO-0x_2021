@@ -1,7 +1,8 @@
 package ІО_06._16_Панкін_Владислав_Андрійович.lab5;
 
 public class Letter {
-    private char letter;
+    private final char letter;
+    private final static String vowelLetter="aeyuioуеаояиюэёыAEYUIOУЕАОЯИЮЭЁЫ";
 
     public Letter(char symbol) {
         letter = symbol;
@@ -14,12 +15,7 @@ public class Letter {
 
     // метод перевіряє чи є задана буква голосною
     public boolean isVowelLetter() {
-        String VowelLetter="aeyuioуеаояиюэёыAEYUIOУЕАОЯИЮЭЁЫ";
-
-        if (VowelLetter.indexOf(letter) >= 0)
-            return true;
-        else
-            return false;
+        return vowelLetter.indexOf(letter) >= 0;
     }
 
 }

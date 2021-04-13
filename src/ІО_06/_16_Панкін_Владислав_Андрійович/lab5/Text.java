@@ -6,7 +6,7 @@ import java.util.*;
 public class Text {
     private String text;
     private ArrayList<Sentence> sentence = new ArrayList<Sentence>();
-    private ArrayList<Word> WordToVowel = new ArrayList<Word>();
+    private ArrayList<Word> wordToVowel = new ArrayList<Word>();
 
 
     Text(String atext) {
@@ -49,28 +49,28 @@ public class Text {
     }
 
     // метод формує список слів, які починаються на голосну
-    public void FindWordToVowel(){
+    public void findWordToVowel(){
         if (!sentence.isEmpty()) {
-            if (!WordToVowel.isEmpty())
-                WordToVowel.clear();
+            if (!wordToVowel.isEmpty())
+                wordToVowel.clear();
 
             for (int i = 0; i < sentence.size(); i++) {
-                WordToVowel.addAll(sentence.get(i).GetWordToVowel());
+                wordToVowel.addAll(sentence.get(i).getWordToVowel());
             }
         }
     }
 
     // метод виводить список слів, які починаються на голосну
-    public void PrintArrayWordToVowel(){
-        for (int i = 0; i < WordToVowel.size(); i++){
-            System.out.println(WordToVowel.get(i).getWord());
+    public void printArrayWordToVowel(){
+        for (int i = 0; i < wordToVowel.size(); i++){
+            System.out.println(wordToVowel.get(i).getWord());
         }
     }
 
     // метод сортує список слів, які починаються на голосну
-    public void SortArrayWordToVowel(){
+    public void sortArrayWordToVowel(){
         LetterComparator comp = new LetterComparator();
-        Collections.sort(WordToVowel,comp);
+        wordToVowel.sort(comp);
 
     }
 }

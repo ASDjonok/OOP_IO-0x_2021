@@ -1,16 +1,16 @@
 package ІО_06._16_Панкін_Владислав_Андрійович.lab5;
 
-public class Punktuatoin {
+public class Punctuation {
     private char symbol;
 
 
-    public Punktuatoin(char simbol) {
-        symbol=simbol;
+    public Punctuation(char symbol) {
+        this.symbol = symbol;
     }
 
 
     // метод повертає заданий символ
-    public char getPunktuation() {
+    public char getSymbol() {
         return symbol;
     }
 

@@ -1,11 +1,10 @@
 package ІО_06._16_Панкін_Владислав_Андрійович.lab5;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
     //Відсортувати слова заданого тексту, що починаються з голосних літер, за другою літерою.
 
-        String text = "   Beautiful is \tbetter than ugly.\n" +
+        String text = "   Beautiful is \t\tbetter than ugly.\n" +
                 "Explicit is better than implicit." + '\n'+
                 "Simple is better than complex." + '\n'+
                 "Complex is better than complicated." + '\n'+
@@ -26,15 +25,15 @@ public class Main {
             System.out.println(txt.getText());
             System.out.println();
 
-            txt.FindWordToVowel();
+            txt.findWordToVowel();
             System.out.println("до сортування");
-            txt.PrintArrayWordToVowel();
+            txt.printArrayWordToVowel();
             System.out.println();
 
-            txt.SortArrayWordToVowel();
+            txt.sortArrayWordToVowel();
 
             System.out.println("після сортування");
-            txt.PrintArrayWordToVowel();
+            txt.printArrayWordToVowel();
             System.out.println();
 
         }
