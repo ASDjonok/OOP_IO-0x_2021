@@ -40,8 +40,9 @@ public class Lab5Main {
         ArrayList<Letter> letters = new ArrayList<>();
         String endOfSentencePunctuation = ".!?";
 
+        char symbol;
         for (int i = 0; i < text.length(); i++) {
-            char symbol = text.charAt(i);
+            symbol = text.charAt(i);
 
             if (Character.isLetter(symbol)) {
                 letters.add(new Letter(symbol));
@@ -74,8 +75,9 @@ public class Lab5Main {
         }
         Word newStr = new Word(letters.toArray(new Letter[0]));
 
+        Word[] aWords;
         for (Sentence sentence : newText.getSentences()) {
-            Word[] aWords = sentence.getWords();
+            aWords = sentence.getWords();
             for (int i = 0; i < aWords.length; i++) {
                 if (aWords[i].toString().length() == l) {
                     aWords[i] = newStr;

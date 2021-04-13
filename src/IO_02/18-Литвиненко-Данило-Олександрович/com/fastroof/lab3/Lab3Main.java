@@ -17,7 +17,7 @@ public class Lab3Main {
         // Текстовий рядок з яким виконують зміни
         StringBuilder oldStr = new StringBuilder("There are many variations of passages of ,Lore Ipsum available, but" +
                 " the majority have suffered alteration in (((some)); form, by injected humour, or randomised words " +
-                "which don't look even slightly believable.");
+                "which don't look even slightly believable. 4-th May");
 
         // Довжина слів, які будуть замінені
         int l = 4;

@@ -7,31 +7,31 @@ package com.fastroof.lab4;
  * @version 0.1 02 Mar 2021
  */
 
-public final class Student {
+public class Student {
 
     /** first name of the student */
-    private final String firstName;
+    private String firstName;
 
     /** last name of the student */
-    private final String lastName;
+    private String lastName;
 
     /** middle name of the student */
-    private final String middleName;
+    private String middleName;
 
     /** name of the university */
-    private final String university;
+    private String university;
 
     /** name of the faculty */
-    private final String faculty;
+    private String faculty;
 
     /** number of the specialty */
-    private final int specialtyNumber;
+    private int specialtyNumber;
 
     /** number of the course */
-    private final int courseNumber;
+    private int courseNumber;
 
     /** student score in the rating */
-    private final double ratingScore;
+    private double ratingScore;
 
     /**
      * Create object student
