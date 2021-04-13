@@ -13,13 +13,13 @@ public class Text {
         text = atext;
         int i;
         int j = 0;
-        text=text.replaceAll("\\t", " "); // виконуємо заміну послідовності табуляцій одним пробілом
-        text=text.replaceAll("[\\s]{2,}", " ");
-        text=text.trim();
+        text = text.replaceAll("\\t", " "); // виконуємо заміну послідовності табуляцій одним пробілом
+        text = text.replaceAll("[\\s]{2,}", " ");
+        text = text.trim();
         i = 0;
-		/*
-		 * додаємо кожне речення як елемент ArrayList sentenses
-		 */
+        /*
+         * додаємо кожне речення як елемент ArrayList sentenses
+         */
         for (j = 0; j < text.length(); j++) {
             if (text.charAt(j) == '.') {
                 if ((j > 1) && (j < text.length() - 2)) {
@@ -27,14 +27,13 @@ public class Text {
                         this.sentence.add(new Sentence(text.substring(i, j + 3)));
                         i = j + 3;
                         j = j + 2;
-                    }
-                    else{
+                    } else {
                         this.sentence.add(new Sentence(text.substring(i, j + 1)));
                         i = j + 2;
                     }
-                }else{
-                        this.sentence.add(new Sentence(text.substring(i, j + 1)));
-                        i = j + 2;
+                } else {
+                    this.sentence.add(new Sentence(text.substring(i, j + 1)));
+                    i = j + 2;
                 }
             } else if ((text.charAt(j) == '?') | (text.charAt(j) == '!')) {
                 this.sentence.add(new Sentence(text.substring(i, j + 1)));
@@ -49,7 +48,7 @@ public class Text {
     }
 
     // метод формує список слів, які починаються на голосну
-    public void findWordToVowel(){
+    public void findWordToVowel() {
         if (!sentence.isEmpty()) {
             if (!wordToVowel.isEmpty())
                 wordToVowel.clear();
@@ -61,14 +60,14 @@ public class Text {
     }
 
     // метод виводить список слів, які починаються на голосну
-    public void printArrayWordToVowel(){
-        for (int i = 0; i < wordToVowel.size(); i++){
+    public void printArrayWordToVowel() {
+        for (int i = 0; i < wordToVowel.size(); i++) {
             System.out.println(wordToVowel.get(i).getWord());
         }
     }
 
     // метод сортує список слів, які починаються на голосну
-    public void sortArrayWordToVowel(){
+    public void sortArrayWordToVowel() {
         LetterComparator comp = new LetterComparator();
         wordToVowel.sort(comp);
 
