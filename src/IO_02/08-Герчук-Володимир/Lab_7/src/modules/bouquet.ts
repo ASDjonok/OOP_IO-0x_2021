@@ -6,33 +6,137 @@ class CustomNode {
   constructor(public element: any) { }
 }
 
-export default class Bouquet {
+export default class Bouquet implements Array<FA> {
   length: number;
-  private head!: CustomNode;
+  head!: CustomNode;
 
   constructor() {
     this.length = 0;
   }
+  [n: number]: FA;
+  filter(): FA[] {
+    throw new Error("Method not implemented.");
+  }
+  splice(): FA[] {
+    throw new Error("Method not implemented.");
+  }
+  concat(): FA[] {
+    throw new Error("Method not implemented.");
+  }
+  reduce(): FA {
+    throw new Error("Method not implemented.");
+  }
+  reduceRight(): FA {
+    throw new Error("Method not implemented.");
+  }
+  find(): FA {
+    throw new Error("Method not implemented.");
+  }
+  toString(): string {
+    throw new Error("Method not implemented.");
+  }
+  toLocaleString(): string {
+    throw new Error("Method not implemented.");
+  }
+  pop(): Flower | Accessorie {
+    throw new Error("Method not implemented.");
+  }
+  push(element: FA): number {
+    const node = new CustomNode(element);
 
-  add(...elements: FA[]) {
-    for (let element of elements) {
-      const node = new CustomNode(element);
-  
-      if (!this.head) {
-        this.head = node;
-      } else {
-        let currentNode = this.head;
-        while (currentNode.next) {
-          currentNode = currentNode.next;
-        }
-  
-        currentNode.next = node;
+    if (!this.head) {
+      this.head = node;
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next) {
+        currentNode = currentNode.next;
       }
-  
-      this.length++;
+
+      currentNode.next = node;
     }
+
+    this.length++;
+    return this.length - 1;
+  }
+  join(): string {
+    throw new Error("Method not implemented.");
+  }
+  reverse(): FA[] {
+    throw new Error("Method not implemented.");
+  }
+  shift(): Flower | Accessorie {
+    throw new Error("Method not implemented.");
+  }
+  slice(): FA[] {
+    throw new Error("Method not implemented.");
+  }
+  sort(): this {
+    throw new Error("Method not implemented.");
+  }
+  unshift(): number {
+    throw new Error("Method not implemented.");
+  }
+  lastIndexOf(): number {
+    throw new Error("Method not implemented.");
+  }
+  every(): boolean {
+    throw new Error("Method not implemented.");
+  }
+  some(): boolean {
+    throw new Error("Method not implemented.");
+  }
+  forEach(): void {
+    throw new Error("Method not implemented.");
+  }
+  map<U>(): U[] {
+    throw new Error("Method not implemented.");
+  }
+  findIndex(): number {
+    throw new Error("Method not implemented.");
+  }
+  fill(): this {
+    throw new Error("Method not implemented.");
+  }
+  copyWithin(): this {
+    throw new Error("Method not implemented.");
+  }
+  // specifies the default iterator for an object
+  [Symbol.iterator](): IterableIterator<FA> {
+    throw new Error("Method not implemented.");
+  }
+  entries(): IterableIterator<[number, FA]> {
+    throw new Error("Method not implemented.");
+  }
+  keys(): IterableIterator<number> {
+    throw new Error("Method not implemented.");
+  }
+  values(): IterableIterator<FA> {
+    throw new Error("Method not implemented.");
+  }
+  // for 'with' expression
+  [Symbol.unscopables](): { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; } {
+    throw new Error("Method not implemented.");
   }
 
+  // add(...elements: FA[]) {
+  //   for (let element of elements) {
+  //     const node = new CustomNode(element);
+
+  //     if (!this.head) {
+  //       this.head = node;
+  //     } else {
+  //       let currentNode = this.head;
+  //       while (currentNode.next) {
+  //         currentNode = currentNode.next;
+  //       }
+
+  //       currentNode.next = node;
+  //     }
+
+  //     this.length++;
+  //   }
+  // }
+  // unoverride
   remove(element: FA) {
     if (!this.head) return;
 
@@ -53,11 +157,7 @@ export default class Bouquet {
 
     this.length--;
   }
-
-  isEmpty() {
-    return this.length === 0;
-  }
-
+  // overide
   indexOf(element: FA) {
     if (!this.head) return -1;
     let currentNode = this.head;
@@ -74,6 +174,7 @@ export default class Bouquet {
     return -1;
   }
 
+  // TODO: implement it with a proxy
   elementAt(index: number): FA {
     if (index >= this.length) {
       throw Error('Index is too big');
@@ -138,11 +239,11 @@ export default class Bouquet {
   sortPerFreshness() {
     let unsorted = true;
 
-    while(unsorted) {
+    while (unsorted) {
       unsorted = false;
       let current = this.head;
 
-      while(current) {
+      while (current) {
         let nextNode = current.next;
 
         if (!nextNode) {
@@ -171,22 +272,23 @@ export default class Bouquet {
     }
   }
 
-  getTotalPrice() {
+  getTotalPrice(): number {
     let total = 0;
     let node = this.head;
 
-    while (node) {
+    do {
       total += node.element.price;
       node = node.next;
-    }
+    } while (node);
 
     return total;
   }
 
-  getFlowerWithLength(min: number, max:number): Flower[] {
+  getFlowerWithLength(min: number, max: number): Flower[] {
     let node = this.head;
     const result = [];
     while (node) {
+      console.log(node);
       const length = node.element.len;
       if (length <= max && length >= min) {
         result.push(node.element);
