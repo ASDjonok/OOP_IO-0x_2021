@@ -1,6 +1,6 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab5;
 
-public class Word extends Object {
+public class Word /*extends*/ implements SentenceMember {
 //    todo remove this field in a final version
 //    private String wordString;
     private Letter[] letters;
