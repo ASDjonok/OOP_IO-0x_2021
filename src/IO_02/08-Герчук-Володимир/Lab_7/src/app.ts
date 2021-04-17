@@ -16,7 +16,7 @@ const bouquet = new Bouquet();
 // TODO: index signature
 
 // let result = bouquet.head
-// const proxiedBouquet = new Proxy(bouquet,{
+// const proxiedBouquet = new Proxy(bouquet, {
 //   get (target, prop, receiver) {
 //     if (Number(prop) < receiver.length) {
 //       for (let counter = 0; counter <= Number(prop); counter++) {
@@ -42,7 +42,8 @@ bouquet.sortPerFreshness()
 bouquet.getOutput();
 
 // console.log(bouquet.getTotalPrice());
-// console.log(bouquet.getFlowerWithLength(-10, 20));
+// console.log(bouquet.getFlowerWithLength(0, 20));
+// console.log(bouquet.getFlowerWithLength(20, 50));
 // console.log(bouquet.indexOf(snowdrop));
 // console.log(bouquet.elementAt(3));
 // console.log(bouquet.remove(someAcc));

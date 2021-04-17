@@ -3,7 +3,7 @@ type FA = Flower | Accessorie;
 
 class CustomNode {
   next!: CustomNode;
-  constructor(public element: any) { }
+  constructor(public element: FA) {}
 }
 
 export default class Bouquet implements Array<FA> {
@@ -246,7 +246,10 @@ export default class Bouquet implements Array<FA> {
       while (current) {
         let nextNode = current.next;
 
-        if (!nextNode) {
+        if (!nextNode ||
+            nextNode.element instanceof Accessorie ||
+            current.element instanceof Accessorie
+            ) {
           current = current.next;
           break;
         }
@@ -284,13 +287,16 @@ export default class Bouquet implements Array<FA> {
     return total;
   }
 
-  getFlowerWithLength(min: number, max: number): Flower[] {
+  getFlowerWithLength(min: number, max: number): FA[] {
     let node = this.head;
     const result = [];
     while (node) {
-      console.log(node);
+      if (node.element instanceof Accessorie) { 
+        node = node.next;
+        continue;
+      }
       const length = node.element.len;
-      if (length <= max && length >= min) {
+      if (length <= max && length >= min)  {
         result.push(node.element);
       }
       node = node.next;

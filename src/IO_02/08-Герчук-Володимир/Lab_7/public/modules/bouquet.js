@@ -1,3 +1,4 @@
+import { Accessorie } from './index.js';
 class CustomNode {
     constructor(element) {
         this.element = element;
@@ -222,7 +223,9 @@ export default class Bouquet {
             let current = this.head;
             while (current) {
                 let nextNode = current.next;
-                if (!nextNode) {
+                if (!nextNode ||
+                    nextNode.element instanceof Accessorie ||
+                    current.element instanceof Accessorie) {
                     current = current.next;
                     break;
                 }
@@ -255,7 +258,10 @@ export default class Bouquet {
         let node = this.head;
         const result = [];
         while (node) {
-            console.log(node);
+            if (node.element instanceof Accessorie) {
+                node = node.next;
+                continue;
+            }
             const length = node.element.len;
             if (length <= max && length >= min) {
                 result.push(node.element);
