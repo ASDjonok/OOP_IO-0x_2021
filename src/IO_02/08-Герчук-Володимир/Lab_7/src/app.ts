@@ -2,8 +2,6 @@
 // C3 -> Однозв’язний список
 import { Snowdrop, Rose, Peony, Accessorie, Bouquet, Flower } from './modules/index.js';
 
-// usage
-
 const peony = new Peony(2, 'red', '25%');
 const rose = new Rose(33, 'light-blue', '56%');
 const snowdrop = new Snowdrop(43, 'green', '35%');
@@ -11,14 +9,23 @@ const snowdrop2 = new Snowdrop(12, 'white', '53%');
 const stripe = new Accessorie('stripe', 35);
 const someAcc = new Accessorie('stripe-red', 55);
 
-const bouquet = new Bouquet();
+const bqt = new Bouquet();
 
-// TODO: index signature
+bqt.push(peony);
+bqt.push(rose);
+bqt.push(snowdrop);
+bqt.push(snowdrop2);
+bqt.push(stripe);
+bqt.push(someAcc);
 
-// let result = bouquet.head
-// const proxiedBouquet = new Proxy(bouquet, {
-//   get (target, prop, receiver) {
-//     if (Number(prop) < receiver.length) {
+bqt.sortPerFreshness();
+bqt.output();
+
+// const copied = JSON.parse(JSON.stringify(bqt));
+// const proxiedBouquet = new Proxy(bqt, {
+//   get (target, prop: any, receiver) {
+//     let result = copied.head;
+//     if (Number(prop) < copied.length) {
 //       for (let counter = 0; counter <= Number(prop); counter++) {
 //         result = result.next;
 //       }
@@ -29,23 +36,13 @@ const bouquet = new Bouquet();
 //     return undefined;
 //   }
 // });
-//
 
-bouquet.push(peony);
-bouquet.push(rose);
-bouquet.push(snowdrop);
-bouquet.push(snowdrop2);
-bouquet.push(someAcc);
-bouquet.push(stripe);
 
-bouquet.sortPerFreshness()
-bouquet.getOutput();
-
-// console.log(bouquet.getTotalPrice());
-// console.log(bouquet.getFlowerWithLength(0, 20));
-// console.log(bouquet.getFlowerWithLength(20, 50));
-// console.log(bouquet.indexOf(snowdrop));
-// console.log(bouquet.elementAt(3));
-// console.log(bouquet.remove(someAcc));
-// console.log(bouquet.indexOf(someAcc))
-// console.log(bouquet.length);
+// console.log(bqt.getTotalPrice());
+// console.log(bqt.getFlowerWithLength(0, 20));
+// console.log(bqt.getFlowerWithLength(20, 50));
+// console.log(bqt.indexOf(snowdrop));
+// console.log(bqt.elementAt(3));
+// console.log(bqt.remove(someAcc));
+// console.log(bqt.indexOf(someAcc))
+// console.log(bqt.length);
