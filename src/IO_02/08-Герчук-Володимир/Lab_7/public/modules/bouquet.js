@@ -2,7 +2,6 @@ import LinkedArray from './linkedList.js';
 import Flower from './flower.js';
 import Accessorie from './accessories.js';
 export default class Bouquet extends LinkedArray {
-    // IDK
     getArOfFlowers() {
         const result = [];
         let current = this.head;
@@ -35,7 +34,6 @@ export default class Bouquet extends LinkedArray {
         }
         return this;
     }
-    // IDK
     output(el = this.head) {
         console.log(el.element);
         if (el.next) {

@@ -1,14 +1,10 @@
 import LinkedArray from './linkedList.js';
 import Flower from './flower.js';
 import Accessorie from './accessories.js';
-import CustomNode from './customNode.js';
 
 type FA = Flower | Accessorie;
 
 export default class Bouquet extends LinkedArray implements Array<FA> {
-  head!: CustomNode;
-
-  // IDK
   getArOfFlowers(): FA[] {
     const result = [];
     let current = this.head;
@@ -48,7 +44,6 @@ export default class Bouquet extends LinkedArray implements Array<FA> {
     return this;
   }
 
-  // IDK
   output(el = this.head) {
     console.log(el.element);
 

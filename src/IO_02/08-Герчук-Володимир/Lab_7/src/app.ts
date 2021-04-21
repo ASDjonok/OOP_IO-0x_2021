@@ -1,6 +1,6 @@
 // C2 -> list
 // C3 -> Однозв’язний список
-import { Snowdrop, Rose, Peony, Accessorie, Bouquet, Flower } from './modules/index.js';
+import { Snowdrop, Rose, Peony, Accessorie, Bouquet } from './modules/index.js';
 
 const peony = new Peony(2, 'red', '25%');
 const rose = new Rose(33, 'light-blue', '56%');
@@ -21,28 +21,11 @@ bqt.push(someAcc);
 bqt.sortPerFreshness();
 bqt.output();
 
-// const copied = JSON.parse(JSON.stringify(bqt));
-// const proxiedBouquet = new Proxy(bqt, {
-//   get (target, prop: any, receiver) {
-//     let result = copied.head;
-//     if (Number(prop) < copied.length) {
-//       for (let counter = 0; counter <= Number(prop); counter++) {
-//         result = result.next;
-//       }
-
-//       return result;
-//     }
-
-//     return undefined;
-//   }
-// });
-
-
-// console.log(bqt.getTotalPrice());
-// console.log(bqt.getFlowerWithLength(0, 20));
-// console.log(bqt.getFlowerWithLength(20, 50));
-// console.log(bqt.indexOf(snowdrop));
-// console.log(bqt.elementAt(3));
-// console.log(bqt.remove(someAcc));
-// console.log(bqt.indexOf(someAcc))
-// console.log(bqt.length);
+console.log(bqt.getTotalPrice());
+console.log(bqt.getFlowerWithLength(0, 20));
+console.log(bqt.getFlowerWithLength(20, 50));
+console.log(bqt.indexOf(snowdrop));
+console.log(bqt.elementAt(3));
+console.log(bqt.remove(someAcc));
+console.log(bqt.indexOf(someAcc))
+console.log(bqt.length);

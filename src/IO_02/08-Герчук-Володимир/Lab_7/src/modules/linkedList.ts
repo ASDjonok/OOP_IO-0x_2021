@@ -7,6 +7,7 @@ export default class LinkedArray implements Array<any> {
   constructor() {
     this.length = 0;
   }
+  
   [n: number]: any;
   filter(): any[] {
     throw new Error("Method not implemented.");
