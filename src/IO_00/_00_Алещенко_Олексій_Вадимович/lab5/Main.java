@@ -14,12 +14,14 @@ public class Main {
         });
         System.out.println(word/*.toString()*/);
         System.out.println(word3);
-        Sentence sentence = new Sentence(new Word[]{word, word2});
+//        new Number(1);
+//        Sentence sentence = new Sentence(new Word[]{word, word2});
         Sentence sentence2 = new Sentence("Hello, world.");
 
         Punctuation punctuation = new Punctuation("a");
         System.out.println(":/");
-        System.out.println(sentence);
+//        System.out.println(sentence);
+        System.out.println(sentence2);
 
 //        new SentenceMember();
     }
