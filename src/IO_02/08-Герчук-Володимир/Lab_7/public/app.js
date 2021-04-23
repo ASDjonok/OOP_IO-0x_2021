@@ -1,40 +1,26 @@
 // C2 -> list
 // C3 -> Однозв’язний список
 import { Snowdrop, Rose, Peony, Accessorie, Bouquet } from './modules/index.js';
-// usage
 const peony = new Peony(2, 'red', '25%');
 const rose = new Rose(33, 'light-blue', '56%');
 const snowdrop = new Snowdrop(43, 'green', '35%');
 const snowdrop2 = new Snowdrop(12, 'white', '53%');
 const stripe = new Accessorie('stripe', 35);
 const someAcc = new Accessorie('stripe-red', 55);
-const bouquet = new Bouquet();
-// TODO: index signature
-// let result = bouquet.head
-// const proxiedBouquet = new Proxy(bouquet,{
-//   get (target, prop, receiver) {
-//     if (Number(prop) < receiver.length) {
-//       for (let counter = 0; counter <= Number(prop); counter++) {
-//         result = result.next;
-//       }
-//       return result;
-//     }
-//     return undefined;
-//   }
-// });
-//
-bouquet.push(peony);
-bouquet.push(rose);
-bouquet.push(snowdrop);
-bouquet.push(snowdrop2);
-bouquet.push(someAcc);
-bouquet.push(stripe);
-bouquet.sortPerFreshness();
-bouquet.getOutput();
-// console.log(bouquet.getTotalPrice());
-// console.log(bouquet.getFlowerWithLength(-10, 20));
-// console.log(bouquet.indexOf(snowdrop));
-// console.log(bouquet.elementAt(3));
-// console.log(bouquet.remove(someAcc));
-// console.log(bouquet.indexOf(someAcc))
-// console.log(bouquet.length);
+const bqt = new Bouquet();
+bqt.push(peony);
+bqt.push(rose);
+bqt.push(snowdrop);
+bqt.push(snowdrop2);
+bqt.push(stripe);
+bqt.push(someAcc);
+bqt.sortPerFreshness();
+bqt.output();
+console.log(bqt.getTotalPrice());
+console.log(bqt.getFlowerWithLength(0, 20));
+console.log(bqt.getFlowerWithLength(20, 50));
+console.log(bqt.indexOf(snowdrop));
+console.log(bqt.elementAt(3));
+console.log(bqt.remove(someAcc));
+console.log(bqt.indexOf(someAcc));
+console.log(bqt.length);
