@@ -3,17 +3,11 @@ package BRI_lab5;
 public class Word implements SentenceMember {
     private Letter[] letters;
 
-//    Create constructor to split words into array of letters
     public Word(String wordString) {
         letters = new Letter[wordString.length()];
         for (int i = 0; i < wordString.length(); i++) {
             letters[i] = new Letter(wordString.charAt(i));
         }
-    }
-//    End of constructor
-
-    public void hello() {
-        System.out.println("hello");
     }
 
     @Override

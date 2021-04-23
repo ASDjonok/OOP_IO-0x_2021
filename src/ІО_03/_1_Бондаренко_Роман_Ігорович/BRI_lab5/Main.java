@@ -9,11 +9,7 @@ public class Main {
 
         System.out.println("\\/ Type some text below \\/");
         Text text = new Text(scanner.nextLine());
-//        System.out.println("\\/ Enter a symbol you want \\/");
-//        String symbol = scanner.next();
 
         System.out.println(text);
-
-//        System.out.println(text.countYourSymbolInEverySentence(symbol));
     }
 }
