@@ -1,5 +1,7 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab5;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         Letter letter = new Letter('H');
@@ -23,6 +25,17 @@ public class Main {
 //        System.out.println(sentence);
         System.out.println(sentence2);
 
+        System.out.println(sentence2 instanceof Sentence);
+        System.out.println(word instanceof Word);
+        System.out.println(punctuation instanceof Punctuation);
+
+        Object/*SentenceMember*/ sentenceMember = word;
+        System.out.println(sentenceMember instanceof Punctuation);
+        System.out.println(sentenceMember.getClass());
+        System.out.println(Arrays.toString(sentenceMember.getClass().getDeclaredFields()));
+        sentenceMember = punctuation;
+        System.out.println(sentenceMember instanceof Punctuation);
+        System.out.println(sentenceMember.getClass());
 //        new SentenceMember();
     }
 }

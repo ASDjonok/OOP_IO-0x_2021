@@ -42,12 +42,19 @@ public class Sentence {
     @Override
     public String toString() {
         StringBuilder sentenceString = new StringBuilder();
-        for (SentenceMember sentenceMember : sentenceMembers) {
+        /*for (SentenceMember sentenceMember : sentenceMembers) {
             sentenceString
                     .append(sentenceMember.toString())
                     .append(" ");
+        }*/
+        for (int i = 0; i < sentenceMembers.length - 1; i++) {
+            sentenceString.append(sentenceMembers[i].toString());
+            if (/*i+1 < sentenceMembers.length &&*/ sentenceMembers[i+1] instanceof Word) {
+                sentenceString.append(" ");
+            }
         }
-        sentenceString.deleteCharAt(sentenceString.length() - 1);
+        sentenceString.append(sentenceMembers[sentenceMembers.length - 1].toString());
+//        sentenceString.deleteCharAt(sentenceString.length() - 1);
         /*String sentenceString = "";
         for (Word word : words) {
             sentenceString += word.toString() + " ";
