@@ -2,18 +2,13 @@ package BRI_lab5;
 
 public class Word implements SentenceMember {
     private Letter[] letters;
+    private int counter;
 
-//    Create constructor to split words into array of letters
     public Word(String wordString) {
         letters = new Letter[wordString.length()];
         for (int i = 0; i < wordString.length(); i++) {
             letters[i] = new Letter(wordString.charAt(i));
         }
-    }
-//    End of constructor
-
-    public void hello() {
-        System.out.println("hello");
     }
 
     @Override
@@ -23,5 +18,14 @@ public class Word implements SentenceMember {
             finalWord.append(letter);
         }
         return finalWord.toString();
+    }
+
+    public int check(char symbol) {
+        for (Letter letter : letters) {
+            if (letter.toString().indexOf(symbol) != -1) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
