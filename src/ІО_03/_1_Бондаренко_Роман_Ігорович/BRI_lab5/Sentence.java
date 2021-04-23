@@ -1,5 +1,7 @@
 package BRI_lab5;
 
+import java.util.Arrays;
+
 public class Sentence {
     private SentenceMember[] sentenceMembers;
     private static final String PUNCTUATIONS = "\\p{Punct}";
@@ -25,5 +27,28 @@ public class Sentence {
         }
         finalSentence.append(sentenceMembers[sentenceMembers.length - 1].toString());
         return finalSentence.toString();
+    }
+
+    public int getWords() {
+        int numOfWords = 0;
+        for (SentenceMember sentenceMember : sentenceMembers) {
+            if (sentenceMember instanceof Word) {
+                numOfWords++;
+            }
+        }
+        return numOfWords;
+    }
+
+    public String[] test(char symbol) {
+        String[] wordAndCounter = new String[getWords()];
+        int indexForArray = 0;
+        for (SentenceMember sentenceMember : sentenceMembers) {
+            if (sentenceMember instanceof Word) {
+                String info = ((Word) sentenceMember).check(symbol) + " " + sentenceMember;
+                wordAndCounter[indexForArray] = info;
+                indexForArray++;
+            }
+        }
+        return wordAndCounter;
     }
 }

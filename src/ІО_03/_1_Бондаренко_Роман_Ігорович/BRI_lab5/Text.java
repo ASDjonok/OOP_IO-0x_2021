@@ -1,5 +1,7 @@
 package BRI_lab5;
 
+import java.util.Arrays;
+
 public class Text {
     private Sentence[] sentences;
     private static final String PUNCTUATIONS_BETWEEN_SENTENCES = ".…!?";
@@ -19,5 +21,13 @@ public class Text {
             finalText.append(sentence);
         }
         return finalText.toString();
+    }
+
+    public String[][] doLabTask(char symbol) {
+        String[][] wordsInEverySentence = new String[sentences.length][1];
+        for (int i = 0; i < sentences.length; i++) {
+            wordsInEverySentence[i] = sentences[i].test(symbol);
+        }
+        return wordsInEverySentence;
     }
 }

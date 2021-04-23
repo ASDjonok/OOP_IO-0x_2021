@@ -1,6 +1,7 @@
 package BRI_lab5;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
 
@@ -9,7 +10,9 @@ public class Main {
 
         System.out.println("\\/ Type some text below \\/");
         Text text = new Text(scanner.nextLine());
+        System.out.println("\\/ Type a symbol below \\/");
+        char symbol = scanner.next().charAt(0);
 
-        System.out.println(text);
+        System.out.println(Arrays.deepToString(text.doLabTask(symbol)));
     }
 }

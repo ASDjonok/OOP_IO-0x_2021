@@ -2,6 +2,7 @@ package BRI_lab5;
 
 public class Word implements SentenceMember {
     private Letter[] letters;
+    private int counter;
 
     public Word(String wordString) {
         letters = new Letter[wordString.length()];
@@ -17,5 +18,14 @@ public class Word implements SentenceMember {
             finalWord.append(letter);
         }
         return finalWord.toString();
+    }
+
+    public int check(char symbol) {
+        for (Letter letter : letters) {
+            if (letter.toString().indexOf(symbol) != -1) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
