@@ -1,7 +1,5 @@
 package BRI_lab5;
 
-import java.util.Arrays;
-
 public class Sentence {
     private SentenceMember[] sentenceMembers;
     private static final String PUNCTUATIONS = "\\p{Punct}";
@@ -21,7 +19,7 @@ public class Sentence {
         StringBuilder finalSentence = new StringBuilder();
         for (int i = 0; i < sentenceMembers.length - 1; i++) {
             finalSentence.append(sentenceMembers[i].toString());
-            if (sentenceMembers[i+1] instanceof Word) {
+            if (sentenceMembers[i + 1] instanceof Word) {
                 finalSentence.append(" ");
             }
         }
@@ -29,26 +27,26 @@ public class Sentence {
         return finalSentence.toString();
     }
 
-    public int getWords() {
-        int numOfWords = 0;
+    public int getNumberOfWords() {
+        int numberOfWords = 0;
         for (SentenceMember sentenceMember : sentenceMembers) {
             if (sentenceMember instanceof Word) {
-                numOfWords++;
+                numberOfWords++;
             }
         }
-        return numOfWords;
+        return numberOfWords;
     }
 
-    public String[] test(char symbol) {
-        String[] wordAndCounter = new String[getWords()];
+    public String[][] createArrayOfWordsForEverySentence(char symbol) {
+        String[][] wordsAndTheirCounters = new String[getNumberOfWords()][2];
         int indexForArray = 0;
         for (SentenceMember sentenceMember : sentenceMembers) {
             if (sentenceMember instanceof Word) {
-                String info = ((Word) sentenceMember).check(symbol) + " " + sentenceMember;
-                wordAndCounter[indexForArray] = info;
+                wordsAndTheirCounters[indexForArray][0] = String.valueOf(((Word) sentenceMember).countSymbolsInWord(symbol));
+                wordsAndTheirCounters[indexForArray][1] = String.valueOf(sentenceMember);
                 indexForArray++;
             }
         }
-        return wordAndCounter;
+        return wordsAndTheirCounters;
     }
 }
