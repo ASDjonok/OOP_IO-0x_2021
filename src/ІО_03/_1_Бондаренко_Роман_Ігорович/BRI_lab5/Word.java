@@ -22,7 +22,7 @@ public class Word implements SentenceMember {
     public int countSymbolsInWord(char symbol) {
         int counter = 0;
         for (Letter letter : letters) {
-            if (letter.toString().toLowerCase().indexOf(symbol) != -1) {
+            if (letter.toString().equalsIgnoreCase(String.valueOf(symbol))) {
                 counter++;
             }
         }
