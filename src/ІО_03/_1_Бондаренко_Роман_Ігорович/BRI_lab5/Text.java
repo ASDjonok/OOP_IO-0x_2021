@@ -56,10 +56,20 @@ public class Text {
         return justWords;
     }
 
-    public void getResult(char symbol) {
+    public void getResult(char symbol, String direction) {
         String[][] finalArray = doLabTask(symbol);
-        for (String[] elements : finalArray) {
-            System.out.print(elements[1] + " ");
+        if (direction.equalsIgnoreCase("ascending")) {
+            for (String[] strings : finalArray) {
+                System.out.print(strings[1] + " ");
+            }
+            System.out.println();
+        } else if (direction.equalsIgnoreCase("descending")) {
+            for (int i = finalArray.length - 1; i >= 0; i--) {
+                System.out.print(finalArray[i][1] + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("Wrong direction of sorting was selected!");
         }
     }
 }
