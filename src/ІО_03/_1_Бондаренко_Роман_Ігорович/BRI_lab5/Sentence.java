@@ -2,50 +2,51 @@ package BRI_lab5;
 
 public class Sentence {
     private SentenceMember[] sentenceMembers;
-    public static final String PUNCTUATIONS_IN_SENTENCES = ".…,:!?";
-    public static final String SPECIAL_PUNCTUATION = "-";
-    public static final String PUNCTUATIONS = PUNCTUATIONS_IN_SENTENCES + SPECIAL_PUNCTUATION;
-    public static final String REGEX = "(?=[" + PUNCTUATIONS + "])|\\s";
+    private static final String PUNCTUATIONS = "\\p{Punct}";
 
-//    Create constructor to split a sentence into elements (words and punctuations)
     public Sentence(String sentenceString) {
-        String[] splitSentenceIntoElements = sentenceString.split(REGEX);
-        // Elements is a words or punctuations
+        String[] splitSentenceIntoElements = sentenceString.split("(?=" + PUNCTUATIONS + ")| ");
         sentenceMembers = new SentenceMember[splitSentenceIntoElements.length];
         for (int i = 0; i < splitSentenceIntoElements.length; i++) {
-            if (PUNCTUATIONS_IN_SENTENCES.contains(splitSentenceIntoElements[i])) {
-                sentenceMembers[i] = new Punctuation(splitSentenceIntoElements[i]);
-            } else {
-                sentenceMembers[i] = new Word(splitSentenceIntoElements[i]);
-            }
+            sentenceMembers[i] = splitSentenceIntoElements[i].matches(PUNCTUATIONS)
+                    ? new Punctuation(splitSentenceIntoElements[i])
+                    : new Word(splitSentenceIntoElements[i]);
         }
     }
-//    End of constructor
-
-//    public int countYourSymbolInEveryWord(String symbol) {
-//        int wordsCounter = 0;
-//        for (SentenceMember sentenceMember : sentenceMembers) {
-//            if (!PUNCTUATIONS.contains(sentenceMember.toString())) {
-//                if (sentenceMember.toString().contains(symbol)) {
-//                    wordsCounter++;
-//                }
-//            }
-//        }
-//        return wordsCounter;
-//    }
 
     @Override
     public String toString() {
         StringBuilder finalSentence = new StringBuilder();
-        for (SentenceMember sentenceMember : sentenceMembers) {
-//          This is my own way of solving problem about spaces between words and punctuations. It starts here.
-            if (PUNCTUATIONS_IN_SENTENCES.contains(sentenceMember.toString())) {
-                finalSentence.append(sentenceMember.toString());
-            } else {
-                finalSentence.append(" ").append(sentenceMember);
+        for (int i = 0; i < sentenceMembers.length - 1; i++) {
+            finalSentence.append(sentenceMembers[i].toString());
+            if (sentenceMembers[i + 1] instanceof Word) {
+                finalSentence.append(" ");
             }
-//          The end of solving that problem.
         }
+        finalSentence.append(sentenceMembers[sentenceMembers.length - 1].toString());
         return finalSentence.toString();
+    }
+
+    public int getNumberOfWords() {
+        int numberOfWords = 0;
+        for (SentenceMember sentenceMember : sentenceMembers) {
+            if (sentenceMember instanceof Word) {
+                numberOfWords++;
+            }
+        }
+        return numberOfWords;
+    }
+
+    public String[][] createArrayOfWordsForEverySentence(char symbol) {
+        String[][] wordsAndTheirCounters = new String[getNumberOfWords()][2];
+        int indexForArray = 0;
+        for (SentenceMember sentenceMember : sentenceMembers) {
+            if (sentenceMember instanceof Word) {
+                wordsAndTheirCounters[indexForArray][0] = String.valueOf(((Word) sentenceMember).countSymbolsInWord(symbol));
+                wordsAndTheirCounters[indexForArray][1] = String.valueOf(sentenceMember);
+                indexForArray++;
+            }
+        }
+        return wordsAndTheirCounters;
     }
 }

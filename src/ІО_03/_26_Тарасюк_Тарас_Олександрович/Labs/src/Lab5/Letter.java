@@ -1,4 +1,4 @@
-package BRI_lab5;
+package Lab5;
 
 public class Letter {
     private char character;
