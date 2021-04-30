@@ -37,5 +37,8 @@ public class Main {
         System.out.println(sentenceMember instanceof Punctuation);
         System.out.println(sentenceMember.getClass());
 //        new SentenceMember();
+
+        Text text = new Text("Hello, world. How are you?");
+        System.out.println(text);
     }
 }

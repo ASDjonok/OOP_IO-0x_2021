@@ -3,15 +3,14 @@ package IO_00._00_Алещенко_Олексій_Вадимович.lab5;
 import java.util.Arrays;
 
 public class Sentence {
-    //    todo remove fields words and punctuations
-    private Word[] words;
-    private Punctuation[] punctuations;
+//    private Word[] words;
+//    private Punctuation[] punctuations;
     private /*Object*/SentenceMember[] sentenceMembers /*= {new Word("Hello"), new Punctuation(".")}*/;
 
-    @Deprecated
-    public Sentence(Word[] words) {
-        this.words = words;
-    }
+//    @Deprecated
+//    public Sentence(Word[] words) {
+//        this.words = words;
+//    }
 
     public Sentence(String sentenceString) {
 //        String[] wordStrings = sentenceString.split(" ,.");
