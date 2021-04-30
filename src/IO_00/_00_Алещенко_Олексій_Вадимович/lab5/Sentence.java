@@ -1,6 +1,8 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab5;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 public class Sentence {
 //    private Word[] words;
@@ -38,6 +40,25 @@ public class Sentence {
         }
     }
 
+    public static void findLargestPalindromicSubstring(Sentence[] sentences) {
+        ArrayList<Word> words = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            words.addAll(sentence.getWords());
+        }
+        Word.findLargestPalindromicSubstring(words);
+    }
+
+    private Collection<Word> getWords() {
+        ArrayList<Word> words = new ArrayList<>();
+        for (SentenceMember sentenceMember : sentenceMembers) {
+            if (sentenceMember instanceof Word) {
+                words.add((Word) sentenceMember);
+            }
+        }
+        return words;
+    }
+
+//    todo think about using "instanceof" (https://github.com/ASDjonok/ORPZ_IP-9x_2021)
     @Override
     public String toString() {
         StringBuilder sentenceString = new StringBuilder();

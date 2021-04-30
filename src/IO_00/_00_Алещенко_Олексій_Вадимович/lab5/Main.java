@@ -4,7 +4,19 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Letter letter = new Letter('H');
+        Text text = new Text("Hello, world. How are you?");
+        System.out.println(text);
+        text.findLargestPalindromicSubstring();
+
+
+
+
+
+
+
+
+
+        /*Letter letter = new Letter('H');
         Word word = new Word("Hello");
         Word word2 = new Word("world");
         Word word3 = new Word(new Letter[]{
@@ -14,7 +26,7 @@ public class Main {
                 new Letter('l'),
                 new Letter('o'),
         });
-        System.out.println(word/*.toString()*/);
+        System.out.println(word*//*.toString()*//*);
         System.out.println(word3);
 //        new Number(1);
 //        Sentence sentence = new Sentence(new Word[]{word, word2});
@@ -29,16 +41,15 @@ public class Main {
         System.out.println(word instanceof Word);
         System.out.println(punctuation instanceof Punctuation);
 
-        Object/*SentenceMember*/ sentenceMember = word;
+        Object*//*SentenceMember*//* sentenceMember = word;
         System.out.println(sentenceMember instanceof Punctuation);
         System.out.println(sentenceMember.getClass());
         System.out.println(Arrays.toString(sentenceMember.getClass().getDeclaredFields()));
         sentenceMember = punctuation;
         System.out.println(sentenceMember instanceof Punctuation);
-        System.out.println(sentenceMember.getClass());
+        System.out.println(sentenceMember.getClass());*/
 //        new SentenceMember();
 
-        Text text = new Text("Hello, world. How are you?");
-        System.out.println(text);
+
     }
 }

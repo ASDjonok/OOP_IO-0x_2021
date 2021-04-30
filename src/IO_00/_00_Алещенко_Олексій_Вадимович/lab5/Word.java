@@ -1,5 +1,7 @@
 package IO_00._00_Алещенко_Олексій_Вадимович.lab5;
 
+import java.util.ArrayList;
+
 public class Word /*extends*/ implements SentenceMember {
 //    todo remove this field in a final version
 //    private String wordString;
@@ -20,6 +22,10 @@ public class Word /*extends*/ implements SentenceMember {
 
     public Word(Letter[] letters) {
         this.letters = letters;
+    }
+
+//    todo think about using array
+    public static void findLargestPalindromicSubstring(ArrayList<Word> words) {
     }
 
     @Override

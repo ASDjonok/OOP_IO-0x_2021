@@ -28,4 +28,8 @@ public class Text {
         textStringBuilder.append(sentences[sentences.length - 1]/*.toString()*/);
         return textStringBuilder.toString();
     }
+
+    public void findLargestPalindromicSubstring() {
+        Sentence.findLargestPalindromicSubstring(sentences);
+    }
 }
