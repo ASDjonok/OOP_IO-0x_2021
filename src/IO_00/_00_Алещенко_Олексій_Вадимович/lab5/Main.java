@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Text text = new Text("Hello, world. How are you?");
         System.out.println(text);
-        text.findLargestPalindromicSubstring();
+//        text.findLargestPalindromicSubstring();
 
 
 

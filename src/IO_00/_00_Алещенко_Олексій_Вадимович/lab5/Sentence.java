@@ -51,6 +51,7 @@ public class Sentence {
     private Collection<Word> getWords() {
         ArrayList<Word> words = new ArrayList<>();
         for (SentenceMember sentenceMember : sentenceMembers) {
+            //    todo think about using "instanceof"
             if (sentenceMember instanceof Word) {
                 words.add((Word) sentenceMember);
             }
