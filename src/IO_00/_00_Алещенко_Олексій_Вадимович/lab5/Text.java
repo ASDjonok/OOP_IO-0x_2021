@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class Text {
     private Sentence[] sentences;
 
+    private static final char SENTENCE_DELIMITER = ' ';
+
     public Text(String textString) {
 //        String[] sentenceStrings = textString.split("(?<=[?.!] |[?.!])");
 //        String[] sentenceStrings = textString.split("(?<=[?.!]| )");
@@ -23,13 +25,62 @@ public class Text {
     public String toString() {
         StringBuilder textStringBuilder = new StringBuilder();
         for (int i = 0; i < sentences.length - 1; i++) {
-            textStringBuilder.append(sentences[i]/*.toString()*/).append(' ');
+            textStringBuilder.append(sentences[i]/*.toString()*/).append(SENTENCE_DELIMITER);
         }
         textStringBuilder.append(sentences[sentences.length - 1]/*.toString()*/);
         return textStringBuilder.toString();
     }
 
     public void findLargestPalindromicSubstring() {
-        Sentence.findLargestPalindromicSubstring(sentences);
+        final Boundaries largestPalindromicBoundaries =
+                Sentence.findLargestPalindromicSubstring(sentences);
+        toStringWithBoundaries(largestPalindromicBoundaries);
+    }
+
+    public String toStringWithBoundaries(Boundaries boundaries) {
+        StringBuilder textStringBuilder = new StringBuilder();
+
+        int indexSentenceWithStartBoundary = getIndexSentenceWithStartBoundary(boundaries);
+        int indexSentenceWithEndBoundary =
+                getIndexSentenceWithEndBoundary(boundaries, indexSentenceWithStartBoundary);
+
+        final Sentence sentenceWithStartBoundary = sentences[indexSentenceWithStartBoundary];
+        if (indexSentenceWithStartBoundary == indexSentenceWithEndBoundary) {
+            textStringBuilder.append(sentenceWithStartBoundary.toStringWithBoundaries(boundaries));
+        } else {
+            textStringBuilder.append(sentenceWithStartBoundary.toStringWithStartBoundary(boundaries));
+
+
+            for (int i = indexSentenceWithStartBoundary + 1; i < indexSentenceWithEndBoundary; i++) {
+                textStringBuilder.append(SENTENCE_DELIMITER).append(sentences[i]);
+            }
+
+            textStringBuilder.append(SENTENCE_DELIMITER)
+                    .append(sentences[indexSentenceWithEndBoundary].toStringWithEndBoundary(boundaries));
+        }
+
+        return textStringBuilder.toString();
+    }
+
+    private int getIndexSentenceWithEndBoundary(Boundaries boundaries, int indexSentenceWithStartBoundary) {
+        int indexSentenceWithEndBoundary;
+        for (int i = indexSentenceWithStartBoundary; i < sentences.length; i++) {
+            if (sentences[i].hasEndBoundary(boundaries)) {
+                indexSentenceWithEndBoundary = i;
+                break;
+            }
+        }
+        return indexSentenceWithEndBoundary;
+    }
+
+    private int getIndexSentenceWithStartBoundary(Boundaries boundaries) {
+        int indexSentenceWithStartBoundary = 0;
+        for (int i = 0; i < sentences.length; i++) {
+            if (sentences[i].hasStartBoundary(boundaries)) {
+                indexSentenceWithStartBoundary = i;
+                break;
+            }
+        }
+        return indexSentenceWithStartBoundary;
     }
 }

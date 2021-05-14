@@ -5,8 +5,11 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         Text text = new Text("Hello, world. How are you?");
+//        Text text = new Text("А роза упала на лапу Азора.");
+//        Text text = new Text("O, world. How are you?");
+//        Text text = new Text("Hel");
         System.out.println(text);
-//        text.findLargestPalindromicSubstring();
+        text.findLargestPalindromicSubstring();
 
 
 

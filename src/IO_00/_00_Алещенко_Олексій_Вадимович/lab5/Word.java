@@ -25,6 +25,24 @@ public class Word /*extends*/ implements SentenceMember {
         this.letters = letters;
     }
 
+    public boolean hasStartBoundary(Boundaries boundaries) {
+        for (Letter letter : letters) {
+            if (letter == boundaries.getStartLetter()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasEndBoundary(Boundaries boundaries) {
+        for (Letter letter : letters) {
+            if (letter == boundaries.getEndLetter()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     static class Interval {
         private int startInterval;
         private int endInterval;
@@ -36,26 +54,44 @@ public class Word /*extends*/ implements SentenceMember {
     }
 
     //    todo think about using array
-    public static void findLargestPalindromicSubstring(ArrayList<Word> words) {
+    public static Boundaries findLargestPalindromicSubstring(ArrayList<Word> words) {
         final Letter[] allLetters = extractLetters(words);
-        final Interval largestPalindromicSubArray = findLargestPalindromicSubArray(allLetters, allLetters.length);
+        final Interval largestPalindromicInterval =
+                findLargestPalindromicInterval(allLetters, allLetters.length);
+
+        final Letter startLetter = allLetters[largestPalindromicInterval.startInterval];
+        final Letter endLetter = allLetters[largestPalindromicInterval.endInterval];
+        return new Boundaries(startLetter, endLetter);
+        /*System.out.print("Largest palindrome: ");
+        for (int i = largestPalindromicInterval.startInterval;
+             i <= largestPalindromicInterval.endInterval; i++) {
+            System.out.print(allLetters[i]);
+        }
+        System.out.println();*/
 //        PalindromeCoordinate palindromeCoordinate = new PalindromeCoordinate(1, 1);
 //        Word.findLargestPalindromicSubstring(words);
     }
 
-    private static Interval findLargestPalindromicSubArray(Letter[] letters, int searchIntervalLength) {
+    private static Interval findLargestPalindromicInterval(Letter[] letters, int searchIntervalLength) {
+//        todo think about adding this check
+        if (searchIntervalLength == 1) {
+            return new Interval(0, 0);
+        }
+
         Interval searchInterval;
         for (int i = 0; i <= letters.length - searchIntervalLength; i++) {
-            searchInterval = new Interval(i, i + searchIntervalLength);
-            if (isPalindrome(letters, searchInterval)) return searchInterval;
+            searchInterval = new Interval(i, i + searchIntervalLength - 1);
+            if (isPalindrome(letters, searchInterval)) {
+                return searchInterval;
+            }
         }
 
 //        todo fix magic number
-        if (searchIntervalLength > 3 ) {
-            findLargestPalindromicSubArray(letters, searchIntervalLength - 1);
-        }
+//        if (searchIntervalLength > 0 ) {
+        return findLargestPalindromicInterval(letters, searchIntervalLength - 1);
+//        }
 
-        return null;
+//        return null;
     }
 
     private static boolean isPalindrome(Letter[] letters, Interval searchInterval) {

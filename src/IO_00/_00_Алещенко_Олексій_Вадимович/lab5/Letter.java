@@ -11,7 +11,8 @@ public class Letter {
 
     @Override
     public String toString() {
-        return "" + symbol;
+//        return "" + symbol;
+        return Character.toString(symbol);
     }
 
     public boolean equalsIgnoreCase(Letter letter) {
