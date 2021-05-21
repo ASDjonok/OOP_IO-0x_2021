@@ -104,4 +104,61 @@ public class Sentence {
         }
         return false;
     }
+
+    public String toStringWithBoundaries(Boundaries boundaries) {
+        StringBuilder sentencePartSB = new StringBuilder();
+
+        int indexWordWithStartBoundary = getIndexWordWithStartBoundary(boundaries);
+        int indexWordWithEndBoundary =
+                getIndexWordWithEndBoundary(boundaries, indexWordWithStartBoundary);
+
+        final Word wordWithStartBoundary = (Word) sentenceMembers[indexWordWithStartBoundary];
+        if (indexWordWithStartBoundary == indexWordWithEndBoundary) {
+            sentencePartSB.append(wordWithStartBoundary.toStringWithBoundaries(boundaries));
+        } else {
+            sentencePartSB.append(wordWithStartBoundary.toStringWithStartBoundary(boundaries));
+
+            /*for (int i = indexWordWithStartBoundary + 1; i < indexWordWithEndBoundary; i++) {
+                sentencePartSB.append(SENTENCE_DELIMITER).append(sentences[i]);
+            }*/
+
+            for (int i = indexWordWithStartBoundary + 1; i < indexWordWithEndBoundary; i++) {
+                sentencePartSB.append(sentenceMembers[i].toString());
+                if (/*i+1 < sentenceMembers.length &&*/ sentenceMembers[i + 1] instanceof Word) {
+                    sentencePartSB.append(" ");
+                }
+            }
+
+            sentencePartSB.append(sentenceMembers[indexWordWithEndBoundary].toStringWithEndBoundary(boundaries));
+
+            /*sentencePartSB.append(SENTENCE_DELIMITER)
+                    .append(sentences[indexSentenceWithEndBoundary].toStringWithEndBoundary(boundaries));*/
+        }
+
+        return sentencePartSB.toString();
+    }
+
+
+
+    private int getIndexWordWithEndBoundary(Boundaries boundaries, int indexWordWithStartBoundary) {
+        int indexWordWithEndBoundary = 0;
+        for (int i = indexWordWithStartBoundary; i < sentenceMembers.length; i++) {
+            if (sentenceMembers[i] instanceof Word && ((Word)sentenceMembers[i]).hasEndBoundary(boundaries)) {
+                indexWordWithEndBoundary = i;
+                break;
+            }
+        }
+        return indexWordWithEndBoundary;
+    }
+
+    private int getIndexWordWithStartBoundary(Boundaries boundaries) {
+        int indexWordWithStartBoundary = 0;
+        for (int i = 0; i < sentenceMembers.length; i++) {
+            if (sentenceMembers[i] instanceof Word && ((Word)sentenceMembers[i]).hasStartBoundary(boundaries)) {
+                indexWordWithStartBoundary = i;
+                break;
+            }
+        }
+        return indexWordWithStartBoundary;
+    }
 }
