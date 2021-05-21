@@ -4,4 +4,9 @@ public class Monocotyledons extends Flower {
     public Monocotyledons(int freshness, int length) {
         super(freshness, length);
     }
+
+    @Override
+    public int getCost() {
+        return getLength();
+    }
 }

@@ -4,4 +4,9 @@ public class Dicotyledonous extends Flower {
     public Dicotyledonous(int freshness, int length) {
         super(freshness, length);
     }
+
+    @Override
+    public int getCost() {
+        return getLength() * 2;
+    }
 }
