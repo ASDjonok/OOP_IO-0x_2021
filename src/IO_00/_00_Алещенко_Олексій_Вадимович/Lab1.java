@@ -1,5 +1,7 @@
 package IO_00._00_Алещенко_Олексій_Вадимович;
 
+import IO_00._00_Алещенко_Олексій_Вадимович.lab6.Monocotyledons;
+
 import java.util.Scanner;
 
 public class Lab1 {

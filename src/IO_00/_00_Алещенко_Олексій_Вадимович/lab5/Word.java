@@ -43,6 +43,24 @@ public class Word /*extends*/ implements SentenceMember {
         return false;
     }
 
+    public String toStringWithBoundaries(Boundaries boundaries) {
+        StringBuilder wordPartSB = new StringBuilder();
+        int currentLetterIndex = 0;
+
+        while (letters[currentLetterIndex] != boundaries.getStartLetter()) {
+            currentLetterIndex++;
+        }
+
+        while (letters[currentLetterIndex] != boundaries.getEndLetter()) {
+            wordPartSB.append(letters[currentLetterIndex++]);
+        }
+
+        wordPartSB.append(letters[currentLetterIndex]);
+//        wordPartSB.append(boundaries.getEndLetter());
+
+        return wordPartSB.toString();
+    }
+
     static class Interval {
         private int startInterval;
         private int endInterval;

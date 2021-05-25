@@ -9,7 +9,7 @@ public class Main {
 //        Text text = new Text("O, world. How are you?");
 //        Text text = new Text("Hel");
         System.out.println(text);
-        text.findLargestPalindromicSubstring();
+        System.out.println("Largest Palindromic Substring: " + text.findLargestPalindromicSubstring());
 
 
 
