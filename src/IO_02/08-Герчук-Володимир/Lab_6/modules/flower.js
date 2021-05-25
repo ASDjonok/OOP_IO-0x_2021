@@ -1,7 +1,5 @@
 /** @module Flower */
 
-import Bouquet from './bouquet.js';
-
 /** Class representing a single flower. */
 export default class Flower {
   /**
@@ -12,7 +10,7 @@ export default class Flower {
    * @param {Number} freshness level of freshness of the flower.
    */
   constructor(len, price, color, freshness) {
-    if (parseFloat(len) < 0 || parseFloat(freshness) < 0) {
+    if (parseFloat(len) <= 0 || parseFloat(freshness) <= 0 || parseFloat(price) <= 0) {
       throw new Error('Invalid arguments in Flower');
     }
 
@@ -20,7 +18,6 @@ export default class Flower {
     this.price = price;
     this.color = color;
     this.freshness = freshness;
-    Bouquet.bouquet.push(this);
   }
 
   /**
@@ -30,9 +27,9 @@ export default class Flower {
    * @return {String} finnal price
    */
   static getPrice(len, K) {
-    if (parseFloat(len) < 1 || K < 0) {
+    if (K <= 0) {
       throw new Error('Invalid arguments for flower in getPrice.');
     }
-    return `${K * parseFloat(len)}`;
+    return K * parseFloat(len);
   }
 }
