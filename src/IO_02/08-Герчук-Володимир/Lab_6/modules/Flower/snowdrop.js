@@ -15,7 +15,7 @@ export default class Snowdrop extends Flower {
    * @param {String} color color.
    * @param {Number} freshness level of freshness.
    */
-  constructor(len, color, freshness) {
-    super(len, Flower.getPrice(len, Snowdrop.#K), color, freshness);
+  constructor({ len, color, freshness }) {
+    super({ len, color, freshness, price: Snowdrop.#K * len });
   }
 }

@@ -15,7 +15,7 @@ export default class Rose extends Flower {
    * @param {String} color color.
    * @param {Number} freshness level of freshness.
    */
-  constructor(len, color, freshness) {
-    super(len, Flower.getPrice(len, Rose.#K), color, freshness);
+  constructor({ len, color, freshness }) {
+    super({ len, price: Rose.#K * len, color, freshness });
   }
 }

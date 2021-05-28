@@ -6,11 +6,11 @@
 /** Class representing Accessorie. */
 export default class Accessory {
   /**
-     * Create accessorie.
-     * @param {String} name name of accessorie.
-     * @param {Number} price price of accessorie.
-     */
-  constructor(name, price) {
+   * Create accessorie.
+   * @param {String} name name of accessorie.
+   * @param {Number} price price of accessorie.
+   */
+  constructor({ name, price }) {
     if (price <= 0) {
       throw Error('Invalid inout for price - ' + price);
     }

@@ -3,6 +3,8 @@
  * @module bouquet
  */
 
+import Flower from '../modules/Flower/flower.js';
+
 /**
  * Checks if argument is integer.
  * @param {any} num
@@ -16,7 +18,7 @@ function isNum(num) {
  * Class representing a hole bouquet.
  */
 export default class Bouquet {
-  constructor(flowersArr) {
+  constructor(flowersArr = []) {
     this.bouquet = flowersArr;
   }
 
@@ -50,5 +52,13 @@ export default class Bouquet {
       throw new Error('Invalid arguments');
     }
     return this.bouquet.filter(({ len }) => len >= start && len <= stop);
+  }
+  /**
+   * @param {Object} flower flower that should be added
+   * @returns {Void}
+   */
+  appendFlower(flower) {
+    if (!(flower instanceof Flower)) throw Error('Not a 🌹');
+    this.bouquet.push(flower);
   }
 }

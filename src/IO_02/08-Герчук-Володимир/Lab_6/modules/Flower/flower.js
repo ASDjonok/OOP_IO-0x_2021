@@ -9,7 +9,7 @@ export default class Flower {
    * @param {String} color color of the flower.
    * @param {Number} freshness level of freshness of the flower.
    */
-  constructor(len, price, color, freshness) {
+  constructor({ len, price, color, freshness }) {
     if (parseFloat(len) <= 0 || parseFloat(freshness) <= 0 || parseFloat(price) <= 0) {
       throw new Error('Invalid arguments in Flower');
     }
@@ -18,18 +18,5 @@ export default class Flower {
     this.price = price;
     this.color = color;
     this.freshness = freshness;
-  }
-
-  /**
-   * Calculate a price of the flower taking into account the length and coefficient.
-   * @param {Number} len length of a flower
-   * @param {Number} K coefficient for price
-   * @return {String} finnal price
-   */
-  static getPrice(len, K) {
-    if (K <= 0) {
-      throw new Error('Invalid arguments for flower in getPrice.');
-    }
-    return K * parseFloat(len);
   }
 }

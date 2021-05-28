@@ -4,11 +4,12 @@
  */
 
 import Bouquet from './bouquet.js';
-import Rose from './rose.js';
-import Peony from './peony.js';
-import Snowdrop from './snowdrop.js';
+import Rose from './Flower/rose.js';
+import Peony from './Flower/peony.js';
+import Snowdrop from './Flower/snowdrop.js';
 import Accessory from './accessory.js';
+import flowerFactory from './flowerFactory.js';
 
 export {
-  Bouquet, Rose, Peony, Snowdrop, Accessory
+  Bouquet, Rose, Peony, Snowdrop, Accessory, flowerFactory
 };

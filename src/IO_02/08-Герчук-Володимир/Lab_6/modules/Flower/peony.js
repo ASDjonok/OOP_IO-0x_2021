@@ -14,7 +14,7 @@ export default class Peony extends Flower {
    * @param {String} color color.
    * @param {Number} freshness level of freshness.
    */
-  constructor(len, color, freshness) {
-    super(len, Flower.getPrice(len, Peony.#K), color, freshness);
+  constructor({ len, color, freshness }) {
+    super({ len, price: Peony.#K * len, color, freshness });
   }
 }
