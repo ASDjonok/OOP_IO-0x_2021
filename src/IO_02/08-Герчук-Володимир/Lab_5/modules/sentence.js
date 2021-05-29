@@ -23,8 +23,6 @@ export default class Sentence {
   }
 
   #roll(sentence) {
-    console.log(sentence.match(/[\w']+|[.,!?;_ ]/g));
-
     sentence.match(/[\w']+|[.,!?;_ ]/g).forEach((el) => {
       if (Sentence.punctuation.includes(el)) {
         this.sentence.push(new Punctuation(el));

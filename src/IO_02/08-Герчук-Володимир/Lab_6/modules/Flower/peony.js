@@ -1,11 +1,11 @@
 /** @module peony */
-import Flower from './flower.js';
+const Flower = require('./flower.js');
 
 /**
  * Class representing a peony.
  * @extends Flower
  */
-export default class Peony extends Flower {
+module.exports = class Peony extends Flower {
   static #K = 3;
 
   /**

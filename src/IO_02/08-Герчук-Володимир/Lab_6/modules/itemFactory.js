@@ -1,8 +1,8 @@
-import Peony from './Flower/peony.js';
-import Rose from './Flower/rose.js';
-import Snowdrop from './Flower/snowdrop.js';
-
-const flowerFactory = {
+const Peony = require('./Flower/peony.js');
+const Rose = require('./Flower/rose.js');
+const Snowdrop = require('./Flower/snowdrop.js');
+const Accessory = require('../modules/accessory');
+module.exports = {
   /**
    * @param {{ len: number, color: string, freshness: number }} stats   - The values for Peony.
    * @returns { Peony }
@@ -18,6 +18,9 @@ const flowerFactory = {
    * @returns { Snowdrop }
    */
   growSnowdrop: (stats) => new Snowdrop(stats),
+  /**
+   * @param {{ name: string, price: number }} stats                      - The values for Accessory.
+   * @returns { Accessory }
+   */
+  createAccessory: (stats) => new Accessory(stats),
 }
-
-export default flowerFactory;

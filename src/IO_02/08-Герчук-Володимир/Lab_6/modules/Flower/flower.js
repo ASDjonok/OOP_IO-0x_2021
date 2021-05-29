@@ -1,7 +1,7 @@
 /** @module Flower */
 
 /** Class representing a single flower. */
-export default class Flower {
+module.exports = class Flower {
   /**
    * Create a flower.
    * @param {Number} len length of the flower.

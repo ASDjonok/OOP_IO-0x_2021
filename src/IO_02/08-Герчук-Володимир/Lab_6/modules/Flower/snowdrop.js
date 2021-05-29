@@ -1,12 +1,12 @@
 /** @module snowdrop */
 
-import Flower from './flower.js';
+const Flower = require('./flower.js');
 
 /**
  * Class representing a snowdrop.
  * @extends Flower
  */
-export default class Snowdrop extends Flower {
+module.exports = class Snowdrop extends Flower {
   static #K = 4;
 
   /**

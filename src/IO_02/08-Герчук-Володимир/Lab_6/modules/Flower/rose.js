@@ -1,12 +1,12 @@
 /** @module rose */
 
-import Flower from './flower.js';
+const Flower = require('./flower.js');
 
 /**
  * Class representing a rose.
  * @extends Flower
  */
-export default class Rose extends Flower {
+module.exports = class Rose extends Flower {
   static #K = 5;
 
   /**

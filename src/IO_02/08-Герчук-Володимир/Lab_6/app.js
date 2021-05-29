@@ -3,13 +3,15 @@
 // Провести сортування квітів у букеті за рівнем свіжості.
 // Знайти квітку в букеті, що відповідає заданому діапазону довжин.
 
-import { flowerFactory, Bouquet } from './modules/index.js';
+const flowerFactory = require('./modules/itemFactory');
+const Bouquet = require('./modules/bouquet');
 
 const vars = ['growPeony', 'growRose', 'growSnowdrop']
 const color = ['red', 'blue', 'white']
 const bqt = new Bouquet();
+
 for (let i = 1, j = 0; i < 25; i++, j = i % 3) {
-  bqt.appendFlower(flowerFactory[vars[j]]({ len: i, color: color[j], freshness: i * 5}));
+  bqt.append(flowerFactory[vars[j]]({ len: i, color: color[j], freshness: i * 5}));
 }
 
 console.log(bqt.bouquet);

@@ -3,8 +3,8 @@
  * @module bouquet
  */
 
-import Flower from '../modules/Flower/flower.js';
-
+const Flower = require('./Flower/flower.js');
+const Accessory = require('./accessory');
 /**
  * Checks if argument is integer.
  * @param {any} num
@@ -17,7 +17,7 @@ function isNum(num) {
 /**
  * Class representing a hole bouquet.
  */
-export default class Bouquet {
+module.exports = class Bouquet {
   constructor(flowersArr = []) {
     this.bouquet = flowersArr;
   }
@@ -43,8 +43,8 @@ export default class Bouquet {
 
   /**
    * Filters the bouquet of flowers by the specified length interval.
-   * @param {Number} start beggining of the range.
-   * @param {Numebr} stop end of the range.
+   * @param {Number} start beggining of the range. - INCLUDED
+   * @param {Numebr} stop end of the range. - INCLUDED
    * @returns {Array} filtered array.
    */
   filtertLen(start, stop) {
@@ -57,8 +57,8 @@ export default class Bouquet {
    * @param {Object} flower flower that should be added
    * @returns {Void}
    */
-  appendFlower(flower) {
-    if (!(flower instanceof Flower)) throw Error('Not a 🌹');
+  append(flower) {
+    if (!(flower instanceof Flower || flower instanceof Accessory)) throw Error('Wrong data type... 🌚');
     this.bouquet.push(flower);
   }
 }

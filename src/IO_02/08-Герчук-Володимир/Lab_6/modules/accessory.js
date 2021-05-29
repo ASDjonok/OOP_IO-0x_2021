@@ -4,7 +4,7 @@
  */
 
 /** Class representing Accessorie. */
-export default class Accessory {
+module.exports = class Accessory {
   /**
    * Create accessorie.
    * @param {String} name name of accessorie.

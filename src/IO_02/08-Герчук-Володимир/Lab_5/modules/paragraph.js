@@ -23,7 +23,7 @@ export default class Paragraph {
         this.paragraph.push(new Sentence(el))
       });
     } catch(e) {
-      console.error(`There must be at least one punctuation mark in the paragraph\nError in "${paragraph}" paragraph;`)
+      throw Error(`There must be at least one punctuation mark in the paragraph\nError in "${paragraph}" paragraph;`)
     }
   }
 }

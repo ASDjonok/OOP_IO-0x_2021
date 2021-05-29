@@ -30,6 +30,7 @@ class Text {
    * @returns {String} string with replaced first and last words.
   */
   getFinalOutput() {
+    if (this.resultedText.length === 0 ) throw Error('We`ve got no text here...')
     const output = [];
     let firstWord = '';
     let lastWord = '';
@@ -63,7 +64,9 @@ class Text {
   }
 }
 
-const legend = new Text('FirstWord ipsum dolor sit, amet consectetur. Adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat molliem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernaturtia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLor sapiente possimus, quae. LAST...');
-console.log(`%cInput: %c${legend.text}`, 'color: green; font-weight: 700; font-size: 20px;', 'color: blue');
-console.log(`%cOutput: %c${legend.getFinalOutput()}`, 'color: green; font-weight: 700; font-size: 20px;', 'color: blue');
-console.log('%cTREE:', 'color: green; font-weight: 700; font-size: 20px;' ,legend.resultedText);
+// const legend = new Text('FirstWord ipsum dolor sit, amet consectetur. Adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat molliem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum aperiam placeat mollitia adipisci iusto eligendi, non nemo aspernaturtia adipisci iusto eligendi, non nemo aspernatur sapiente possimus, quae, officiis cum dolores deleniti eius. Totam quo corporis iure?\nLor sapiente possimus, quae. LAST...');
+// console.log(`%cInput: %c${legend.text}`, 'color: green; font-weight: 700; font-size: 20px;', 'color: blue');
+// console.log(`%cOutput: %c${legend.getFinalOutput()}`, 'color: green; font-weight: 700; font-size: 20px;', 'color: blue');
+// console.log('%cTREE:', 'color: green; font-weight: 700; font-size: 20px;' ,legend.resultedText);
+
+export default Text;
