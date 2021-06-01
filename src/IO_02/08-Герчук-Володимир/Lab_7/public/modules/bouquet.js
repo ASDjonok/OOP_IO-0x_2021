@@ -1,8 +1,8 @@
 import LinkedArray from './linkedList.js';
-import Flower from './flower.js';
-import Accessorie from './accessories.js';
+import Flower from './items/flower.js';
+import Accessorie from './items/accessories.js';
 export default class Bouquet extends LinkedArray {
-    getArOfFlowers() {
+    getArrOfFlowers() {
         const result = [];
         let current = this.head;
         while (current) {
@@ -49,7 +49,7 @@ export default class Bouquet extends LinkedArray {
         } while (node);
         return total;
     }
-    getFlowerWithLength(min, max) {
+    getFlowersWithLength(min, max) {
         let node = this.head;
         const result = [];
         while (node) {

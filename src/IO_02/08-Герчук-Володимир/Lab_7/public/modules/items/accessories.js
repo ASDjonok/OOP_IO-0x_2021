@@ -4,7 +4,7 @@
  */
 /** Class representing Accessorie. */
 export default class Accessorie {
-    constructor(name, price) {
+    constructor({ name, price }) {
         this.name = name;
         this.price = price;
     }

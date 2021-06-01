@@ -1,5 +1,5 @@
 /** @module rose */
-import Flower from './flower.js';
+import Flower from './flower';
 
 /**
  * Class representing a peony.
@@ -8,7 +8,7 @@ import Flower from './flower.js';
 export default class Rose extends Flower {
   static readonly K = 5.8;
   
-  constructor(len: number, color: string, freshness: string) {
-    super(len,  color, freshness, Rose.K);
+  constructor({ len, color, freshness }: FlowerConstructorConf) {
+    super({ len, color, freshness, K: Rose.K });
   }
 }

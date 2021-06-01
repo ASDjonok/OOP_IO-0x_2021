@@ -1,5 +1,5 @@
 /** @module snowdrop */
-import Flower from './flower.js';
+import Flower from './flower';
 
 /**
  * Class representing a peony.
@@ -8,7 +8,7 @@ import Flower from './flower.js';
 export default class Snowdrop extends Flower {
   static readonly K = 4.5;
 
-  constructor(len: number, color: string, freshness: string) {
-    super(len,  color, freshness, Snowdrop.K);
+  constructor({ len, color, freshness }: FlowerConstructorConf) {
+    super({ len, color, freshness, K: Snowdrop.K });
   }
 }
