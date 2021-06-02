@@ -3,7 +3,7 @@ const jasmine = new Jasmine();
 
 jasmine.loadConfig({
     spec_dir: '',
-    spec_files: ['Lab_6/**/*.spec.js'],
+    spec_files: ['test/Lab_*_test/*.spec.js'],
     helpers: ['helpers/**/*.js'],
     random: false,
     stopSpecOnExpectationFailure: false

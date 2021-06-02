@@ -2,7 +2,7 @@
   "name": "labs",
   "version": "1.0.0",
   "description": "OOP-labs",
-  "main": "whateever.js",
+  "main": "whatever.js",
   "scripts": {
     "test:jasmine": "node jasmine.js",
     "test:karma": "npx karma start karma.conf.js"
@@ -10,24 +10,29 @@
   "type": "commonjs",
   "author": "ic3top",
   "license": "ISC",
-  "dependencies": {
-    "jasmine": "^3.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "babel-eslint": "^10.1.0",
+    "babel-register": "^6.26.0",
     "browserify": "^17.0.0",
     "browserify-istanbul": "^3.0.1",
     "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "istanbul": "^0.4.5",
+    "jasmine": "^3.7.0",
     "jasmine-console-reporter": "^3.1.0",
-    "jasmine-core": "^3.5.0",
+    "jasmine-core": "^3.7.1",
     "karma": "^4.4.1",
     "karma-browserify": "^7.0.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.3",
-    "karma-jasmine": "^3.1.1",
-    "karma-jasmine-html-reporter": "^1.5.2",
+    "karma-jasmine": "^3.3.1",
+    "karma-jasmine-html-reporter": "^1.6.0",
     "karma-spec-reporter": "0.0.32",
+    "sinon": "^11.1.1",
     "watchify": "^3.11.1"
   }
 }

@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
   ],
-  ignorePatterns: ['*.d.ts', '.*', 'test'],
+  ignorePatterns: ['*.d.ts', '.*', 'test', '*.conf*', 'jasmine.js'],
   rules: {
     'class-methods-use-this': 'off',
     'import/extensions': 'off',
