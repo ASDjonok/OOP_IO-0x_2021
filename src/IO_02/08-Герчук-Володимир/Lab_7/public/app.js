@@ -1,4 +1,15 @@
-export {};
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// C2 -> list
+// C3 -> Однозв’язний список
+const bouquet_1 = __importDefault(require("./modules/bouquet"));
+const itemFactory_1 = __importDefault(require("./modules/itemFactory"));
+const bqt = new bouquet_1.default();
+bqt.push(itemFactory_1.default.createAccessory({ name: '', price: 23 }));
+bqt.output();
 // const peony = new Peony(2, 'red', '25%');
 // const rose = new Rose(33, 'light-blue', '56%');
 // const snowdrop = new Snowdrop(43, 'green', '35%');

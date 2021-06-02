@@ -7,8 +7,10 @@ import Flower from './flower';
  */
 export default class Rose extends Flower {
   static readonly K = 5.8;
-  
+
   constructor({ len, color, freshness }: FlowerConstructorConf) {
-    super({ len, color, freshness, K: Rose.K });
+    super({
+      len, color, freshness, K: Rose.K,
+    });
   }
 }

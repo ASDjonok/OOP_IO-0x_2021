@@ -1,7 +1,9 @@
+"use strict";
 /** @module Flower */
+Object.defineProperty(exports, "__esModule", { value: true });
 /** Class representing a single flower. */
-export default class Flower {
-    constructor({ len, color, K, freshness }) {
+class Flower {
+    constructor({ len, color, K, freshness, }) {
         if (len < 0 || parseFloat(freshness) < 0) {
             throw new Error('Invalid arguments in Flower');
         }
@@ -11,3 +13,4 @@ export default class Flower {
         this.freshness = freshness;
     }
 }
+exports.default = Flower;

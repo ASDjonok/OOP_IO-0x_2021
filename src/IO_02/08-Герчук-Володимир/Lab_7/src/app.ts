@@ -3,6 +3,9 @@
 import Bouquet from './modules/bouquet';
 import itemFactory from './modules/itemFactory';
 
+const bqt = new Bouquet();
+bqt.push(itemFactory.createAccessory({ name: '', price: 23 }));
+bqt.output();
 // const peony = new Peony(2, 'red', '25%');
 // const rose = new Rose(33, 'light-blue', '56%');
 // const snowdrop = new Snowdrop(43, 'green', '35%');

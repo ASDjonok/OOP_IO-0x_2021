@@ -1,37 +1,102 @@
-import CustomNode from './customNode.js';
-export default class LinkedArray {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const customNode_1 = __importDefault(require("./customNode"));
+class LinkedArray {
     constructor() {
         this.length = 0;
+        this.head = null;
     }
     filter() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     splice() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     concat() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     reduce() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     reduceRight() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     find() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     toString() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     toLocaleString() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     pop() {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
+    }
+    join() {
+        throw new Error('Method not implemented.');
+    }
+    reverse() {
+        throw new Error('Method not implemented.');
+    }
+    shift() {
+        throw new Error('Method not implemented.');
+    }
+    slice() {
+        throw new Error('Method not implemented.');
+    }
+    sort() {
+        throw new Error('Method not implemented.');
+    }
+    unshift() {
+        throw new Error('Method not implemented.');
+    }
+    lastIndexOf() {
+        throw new Error('Method not implemented.');
+    }
+    every() {
+        throw new Error('Method not implemented.');
+    }
+    some() {
+        throw new Error('Method not implemented.');
+    }
+    forEach() {
+        throw new Error('Method not implemented.');
+    }
+    map() {
+        throw new Error('Method not implemented.');
+    }
+    findIndex() {
+        throw new Error('Method not implemented.');
+    }
+    fill() {
+        throw new Error('Method not implemented.');
+    }
+    copyWithin() {
+        throw new Error('Method not implemented.');
+    }
+    // specifies the default iterator for an object
+    [Symbol.iterator]() {
+        throw new Error('Method not implemented.');
+    }
+    entries() {
+        throw new Error('Method not implemented.');
+    }
+    keys() {
+        throw new Error('Method not implemented.');
+    }
+    values() {
+        throw new Error('Method not implemented.');
+    }
+    // for 'with' expression
+    [Symbol.unscopables]() {
+        throw new Error('Method not implemented.');
     }
     push(element) {
-        const node = new CustomNode(element);
+        const node = new customNode_1.default(element);
         if (!this.head) {
             this.head = node;
         }
@@ -42,71 +107,11 @@ export default class LinkedArray {
             }
             currentNode.next = node;
         }
-        this.length++;
-        return this.length - 1;
-    }
-    join() {
-        throw new Error("Method not implemented.");
-    }
-    reverse() {
-        throw new Error("Method not implemented.");
-    }
-    shift() {
-        throw new Error("Method not implemented.");
-    }
-    slice() {
-        throw new Error("Method not implemented.");
-    }
-    sort() {
-        throw new Error("Method not implemented.");
-    }
-    unshift() {
-        throw new Error("Method not implemented.");
-    }
-    lastIndexOf() {
-        throw new Error("Method not implemented.");
-    }
-    every() {
-        throw new Error("Method not implemented.");
-    }
-    some() {
-        throw new Error("Method not implemented.");
-    }
-    forEach() {
-        throw new Error("Method not implemented.");
-    }
-    map() {
-        throw new Error("Method not implemented.");
-    }
-    findIndex() {
-        throw new Error("Method not implemented.");
-    }
-    fill() {
-        throw new Error("Method not implemented.");
-    }
-    copyWithin() {
-        throw new Error("Method not implemented.");
-    }
-    // specifies the default iterator for an object
-    [Symbol.iterator]() {
-        throw new Error("Method not implemented.");
-    }
-    entries() {
-        throw new Error("Method not implemented.");
-    }
-    keys() {
-        throw new Error("Method not implemented.");
-    }
-    values() {
-        throw new Error("Method not implemented.");
-    }
-    // for 'with' expression
-    [Symbol.unscopables]() {
-        throw new Error("Method not implemented.");
+        return this.length++;
     }
     remove(element) {
         if (!this.head)
-            return;
+            return null;
         let currentNode = this.head;
         let previousNode;
         if (currentNode.element === element) {
@@ -122,6 +127,7 @@ export default class LinkedArray {
             previousNode.next = currentNode.next;
         }
         this.length--;
+        return element;
     }
     indexOf(element) {
         if (!this.head)
@@ -133,13 +139,16 @@ export default class LinkedArray {
             if (currentNode.element === element) {
                 return index;
             }
+            if (!currentNode.next) {
+                break;
+            }
             currentNode = currentNode.next;
         }
         return -1;
     }
     elementAt(index) {
-        if (index >= this.length) {
-            throw Error('Index is too big');
+        if (index >= this.length || index < 0) {
+            throw Error(`Invalid index (${index})`);
         }
         let currentNode = this.head;
         let count = 0;
@@ -147,13 +156,13 @@ export default class LinkedArray {
             count++;
             currentNode = currentNode.next;
         }
-        return currentNode.element;
+        return currentNode;
     }
     addAt(index, element) {
-        if (index > this.length) {
-            throw Error(`Index - ${index} is grater than length - ${this.length}`);
+        if (index > this.length || index < 0) {
+            throw Error(`Invalid index (${index})`);
         }
-        const node = new CustomNode(element);
+        const node = new customNode_1.default(element);
         let currentNode = this.head;
         let previousNode;
         let currentIndex = 0;
@@ -173,14 +182,14 @@ export default class LinkedArray {
         this.length++;
     }
     removeAt(index) {
+        if (index < 0 || index >= this.length) {
+            throw Error(`Invalid index (${index})`);
+        }
         let currentNode = this.head;
         let previousNode;
         let currentIndex = 0;
-        if (index < 0 || index >= this.length) {
-            return null;
-        }
         if (index === 0) {
-            this.head = currentNode.next;
+            this.head = currentNode && currentNode.next;
         }
         else {
             while (currentIndex < index) {
@@ -191,6 +200,7 @@ export default class LinkedArray {
             previousNode.next = currentNode.next;
         }
         this.length--;
-        return currentNode.element;
+        return currentNode;
     }
 }
+exports.default = LinkedArray;

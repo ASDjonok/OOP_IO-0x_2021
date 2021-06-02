@@ -9,6 +9,8 @@ export default class Snowdrop extends Flower {
   static readonly K = 4.5;
 
   constructor({ len, color, freshness }: FlowerConstructorConf) {
-    super({ len, color, freshness, K: Snowdrop.K });
+    super({
+      len, color, freshness, K: Snowdrop.K,
+    });
   }
 }

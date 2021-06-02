@@ -1,6 +1,6 @@
 interface FlowerConstructorConf {
-  len: number; 
-  color: string; 
+  len: number;
+  color: string;
   freshness: string;
 }
 
