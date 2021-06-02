@@ -16,6 +16,8 @@ module.exports = class Snowdrop extends Flower {
    * @param {Number} freshness level of freshness.
    */
   constructor({ len, color, freshness }) {
-    super({ len, color, freshness, price: Snowdrop.#K * len });
+    super({
+      len, color, freshness, price: Snowdrop.#K * len,
+    });
   }
-}
+};

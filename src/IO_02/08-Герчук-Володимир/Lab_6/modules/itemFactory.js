@@ -1,7 +1,8 @@
 const Peony = require('./Flower/peony.js');
 const Rose = require('./Flower/rose.js');
 const Snowdrop = require('./Flower/snowdrop.js');
-const Accessory = require('../modules/accessory');
+const Accessory = require('./accessory');
+
 module.exports = {
   /**
    * @param {{ len: number, color: string, freshness: number }} stats   - The values for Peony.
@@ -23,4 +24,4 @@ module.exports = {
    * @returns { Accessory }
    */
   createAccessory: (stats) => new Accessory(stats),
-}
+};

@@ -15,6 +15,8 @@ module.exports = class Peony extends Flower {
    * @param {Number} freshness level of freshness.
    */
   constructor({ len, color, freshness }) {
-    super({ len, price: Peony.#K * len, color, freshness });
+    super({
+      len, price: Peony.#K * len, color, freshness,
+    });
   }
-}
+};

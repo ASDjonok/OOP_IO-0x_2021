@@ -28,7 +28,7 @@ module.exports = class Bouquet {
    */
   getTotalPrice() {
     return this.bouquet.reduce((acc, {
-      price
+      price,
     }) => acc + parseFloat(price), 0);
   }
 
@@ -53,6 +53,7 @@ module.exports = class Bouquet {
     }
     return this.bouquet.filter(({ len }) => len >= start && len <= stop);
   }
+
   /**
    * @param {Object} flower flower that should be added
    * @returns {Void}
@@ -61,4 +62,4 @@ module.exports = class Bouquet {
     if (!(flower instanceof Flower || flower instanceof Accessory)) throw Error('Wrong data type... 🌚');
     this.bouquet.push(flower);
   }
-}
+};

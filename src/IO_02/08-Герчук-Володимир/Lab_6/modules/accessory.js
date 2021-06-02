@@ -12,9 +12,9 @@ module.exports = class Accessory {
    */
   constructor({ name, price }) {
     if (price <= 0) {
-      throw Error('Invalid inout for price - ' + price);
+      throw Error(`Invalid inout for price - ${price}`);
     }
     this.name = name;
     this.price = price;
   }
-}
+};

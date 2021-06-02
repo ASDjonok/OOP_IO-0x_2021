@@ -16,6 +16,8 @@ module.exports = class Rose extends Flower {
    * @param {Number} freshness level of freshness.
    */
   constructor({ len, color, freshness }) {
-    super({ len, price: Rose.#K * len, color, freshness });
+    super({
+      len, price: Rose.#K * len, color, freshness,
+    });
   }
-}
+};
