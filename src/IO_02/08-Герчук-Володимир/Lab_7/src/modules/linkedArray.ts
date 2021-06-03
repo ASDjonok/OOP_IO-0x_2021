@@ -1,4 +1,5 @@
 import CustomNode from './customNode';
+import { readPossibleError, ArgumentError } from './Errors';
 
 export default class LinkedArray implements Array<any> {
   length: number;
@@ -192,10 +193,12 @@ export default class LinkedArray implements Array<any> {
   }
 
   elementAt(index: number): any {
-    if (index >= this.length || index < 0) {
-      throw Error(`Invalid index (${index})`);
-    }
-
+    readPossibleError(() => {
+      if (index >= this.length || index < 0) {
+        throw new ArgumentError(`Invalid index (${index})`, index);
+      }
+    });
+  
     let currentNode = this.head;
     let count = 0;
     while (count < index) {
@@ -207,9 +210,11 @@ export default class LinkedArray implements Array<any> {
   }
 
   addAt(index: number, element: any) {
-    if (index > this.length || index < 0) {
-      throw Error(`Invalid index (${index})`);
-    }
+    readPossibleError(() => {
+      if (index > this.length || index < 0) {
+        throw new ArgumentError(`Invalid index (${index})`);
+      }
+    });
     const node = new CustomNode(element);
     let currentNode = this.head;
     let previousNode: CustomNode | null;
@@ -232,9 +237,11 @@ export default class LinkedArray implements Array<any> {
   }
 
   removeAt(index: number) {
-    if (index < 0 || index >= this.length) {
-      throw Error(`Invalid index (${index})`);
-    }
+    readPossibleError(() => {
+      if (index < 0 || index >= this.length) {
+        throw new ArgumentError(`Invalid index (${index})`);
+      }
+    });
 
     let currentNode = this.head;
     let previousNode: CustomNode;

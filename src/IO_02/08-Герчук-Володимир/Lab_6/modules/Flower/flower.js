@@ -1,5 +1,7 @@
 /** @module Flower */
 
+const { readPossibleError, ArgumentError } = require('../Errors');
+
 /** Class representing a single flower. */
 module.exports = class Flower {
   /**
@@ -12,13 +14,15 @@ module.exports = class Flower {
   constructor({
     len, price, color, freshness,
   }) {
-    if (parseFloat(len) <= 0 || parseFloat(freshness) <= 0 || parseFloat(price) <= 0) {
-      throw new Error('Invalid arguments in Flower');
-    }
+    readPossibleError(() => {
+      if (parseFloat(len) <= 0 || parseFloat(freshness) < 0 || parseFloat(price) <= 0) {
+        throw new ArgumentError('Invalid arguments given');
+      }
 
-    this.len = len;
-    this.price = price;
-    this.color = color;
-    this.freshness = freshness;
+      this.len = len;
+      this.price = price;
+      this.color = color;
+      this.freshness = freshness;
+    });
   }
 };

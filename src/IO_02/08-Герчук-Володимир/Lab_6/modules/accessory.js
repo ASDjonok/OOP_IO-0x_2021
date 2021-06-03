@@ -3,6 +3,7 @@
  * @module Accessories
  */
 
+const { ArgumentError, readPossibleError } = require('./Errors');
 /** Class representing Accessorie. */
 module.exports = class Accessory {
   /**
@@ -11,10 +12,13 @@ module.exports = class Accessory {
    * @param {Number} price price of accessorie.
    */
   constructor({ name, price }) {
-    if (price <= 0) {
-      throw Error(`Invalid inout for price - ${price}`);
-    }
-    this.name = name;
-    this.price = price;
+    readPossibleError(() => {
+      if (price <= 0) {
+        throw new ArgumentError('Invalid input for price', price);
+      }
+
+      this.name = name;
+      this.price = price;
+    });
   }
 };

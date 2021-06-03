@@ -1,6 +1,11 @@
-const Peony = require('./Flower/peony.js');
-const Rose = require('./Flower/rose.js');
-const Snowdrop = require('./Flower/snowdrop.js');
+/**
+ * Bouquet module.
+ * @module itemFactory
+ */
+
+const Peony = require('./Flower/peony');
+const Rose = require('./Flower/rose');
+const Snowdrop = require('./Flower/snowdrop');
 const Accessory = require('./accessory');
 
 module.exports = {

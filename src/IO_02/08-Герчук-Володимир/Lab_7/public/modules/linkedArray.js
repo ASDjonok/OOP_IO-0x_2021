@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const customNode_1 = __importDefault(require("./customNode"));
+const Errors_1 = require("./Errors");
 class LinkedArray {
     constructor() {
         this.length = 0;
@@ -147,9 +148,11 @@ class LinkedArray {
         return -1;
     }
     elementAt(index) {
-        if (index >= this.length || index < 0) {
-            throw Error(`Invalid index (${index})`);
-        }
+        Errors_1.readPossibleError(() => {
+            if (index >= this.length || index < 0) {
+                throw new Errors_1.ArgumentError(`Invalid index (${index})`, index);
+            }
+        });
         let currentNode = this.head;
         let count = 0;
         while (count < index) {
@@ -159,9 +162,11 @@ class LinkedArray {
         return currentNode;
     }
     addAt(index, element) {
-        if (index > this.length || index < 0) {
-            throw Error(`Invalid index (${index})`);
-        }
+        Errors_1.readPossibleError(() => {
+            if (index > this.length || index < 0) {
+                throw new Errors_1.ArgumentError(`Invalid index (${index})`);
+            }
+        });
         const node = new customNode_1.default(element);
         let currentNode = this.head;
         let previousNode;
@@ -182,9 +187,11 @@ class LinkedArray {
         this.length++;
     }
     removeAt(index) {
-        if (index < 0 || index >= this.length) {
-            throw Error(`Invalid index (${index})`);
-        }
+        Errors_1.readPossibleError(() => {
+            if (index < 0 || index >= this.length) {
+                throw new Errors_1.ArgumentError(`Invalid index (${index})`);
+            }
+        });
         let currentNode = this.head;
         let previousNode;
         let currentIndex = 0;

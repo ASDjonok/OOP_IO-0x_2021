@@ -7,9 +7,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // C3 -> Однозв’язний список
 const bouquet_1 = __importDefault(require("./modules/bouquet"));
 const itemFactory_1 = __importDefault(require("./modules/itemFactory"));
+const flower_1 = __importDefault(require("./modules/items/flower"));
 const bqt = new bouquet_1.default();
 bqt.push(itemFactory_1.default.createAccessory({ name: '', price: 23 }));
 bqt.output();
+console.log(new flower_1.default({ len: -10, color: 'red', freshness: '123%', K: 4 }));
 // const peony = new Peony(2, 'red', '25%');
 // const rose = new Rose(33, 'light-blue', '56%');
 // const snowdrop = new Snowdrop(43, 'green', '35%');

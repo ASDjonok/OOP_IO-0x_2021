@@ -2,10 +2,11 @@
 // C3 -> Однозв’язний список
 import Bouquet from './modules/bouquet';
 import itemFactory from './modules/itemFactory';
-
+import Flower from './modules/items/flower';
 const bqt = new Bouquet();
 bqt.push(itemFactory.createAccessory({ name: '', price: 23 }));
 bqt.output();
+console.log(new Flower({ len: -10, color: 'red', freshness: '123%', K: 4 }));
 // const peony = new Peony(2, 'red', '25%');
 // const rose = new Rose(33, 'light-blue', '56%');
 // const snowdrop = new Snowdrop(43, 'green', '35%');

@@ -3,8 +3,9 @@
  * @module bouquet
  */
 
-const Flower = require('./Flower/flower.js');
+const Flower = require('./Flower/flower');
 const Accessory = require('./accessory');
+const { readPossibleError, ArgumentError } = require('./Errors');
 /**
  * Checks if argument is integer.
  * @param {any} num
@@ -18,6 +19,10 @@ function isNum(num) {
  * Class representing a hole bouquet.
  */
 module.exports = class Bouquet {
+  /**
+   * constructor for Bouquet class.
+   * @param {Array} flowersArr
+   */
   constructor(flowersArr = []) {
     this.bouquet = flowersArr;
   }
@@ -27,9 +32,13 @@ module.exports = class Bouquet {
    * @returns {Number} total price
    */
   getTotalPrice() {
-    return this.bouquet.reduce((acc, {
-      price,
-    }) => acc + parseFloat(price), 0);
+    if (this.bouquet.length > 0) {
+      return this.bouquet.reduce((acc, {
+        price,
+      }) => acc + parseFloat(price), 0);
+    }
+
+    return 0;
   }
 
   /**
@@ -47,19 +56,26 @@ module.exports = class Bouquet {
    * @param {Numebr} stop end of the range. - INCLUDED
    * @returns {Array} filtered array.
    */
-  filtertLen(start, stop) {
-    if (start < 0 || stop < 0 || start >= stop || !isNum(start) || !isNum(stop)) {
-      throw new Error('Invalid arguments');
-    }
-    return this.bouquet.filter(({ len }) => len >= start && len <= stop);
+  filterLen(start, stop) {
+    return readPossibleError(() => {
+      if (start < 0 || stop < 0 || start >= stop || !isNum(start) || !isNum(stop)) {
+        throw new ArgumentError('Invalid arguments given');
+      }
+
+      return this.bouquet.filter(({ len }) => len >= start && len <= stop);
+    });
   }
 
   /**
    * @param {Object} flower flower that should be added
    * @returns {Void}
    */
-  append(flower) {
-    if (!(flower instanceof Flower || flower instanceof Accessory)) throw Error('Wrong data type... 🌚');
-    this.bouquet.push(flower);
+  append(item) {
+    readPossibleError(() => {
+      if (!(item instanceof Flower || item instanceof Accessory)) {
+        throw new ArgumentError('Wrong data type... 🌚');
+      }
+      this.bouquet.push(item);
+    });
   }
 };
