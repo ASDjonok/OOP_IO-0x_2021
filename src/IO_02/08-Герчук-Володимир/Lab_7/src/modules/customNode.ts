@@ -1,5 +1,10 @@
 export default class CustomNode {
-  next!: CustomNode;
-  constructor(public element: any) {}
-}
+  next: CustomNode | null;
 
+  element: any;
+
+  constructor(element: any, next: CustomNode | null = null) {
+    this.element = element;
+    this.next = next;
+  }
+}

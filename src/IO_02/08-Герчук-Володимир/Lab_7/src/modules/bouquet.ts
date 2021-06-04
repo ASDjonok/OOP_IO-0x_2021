@@ -1,14 +1,14 @@
-import LinkedArray from './linkedList.js';
-import Flower from './flower.js';
-import Accessorie from './accessories.js';
+import LinkedArray from './linkedArray.js';
+import Flower from './items/flower.js';
+import Accessorie from './items/accessories.js';
 
 type FA = Flower | Accessorie;
 
 export default class Bouquet extends LinkedArray implements Array<FA> {
-  getArOfFlowers(): FA[] {
+  getArrOfFlowers(): FA[] {
     const result = [];
     let current = this.head;
-    while(current) {
+    while (current) {
       const toPush = current.element;
       if (toPush instanceof Flower) {
         result.push(current.element);
@@ -26,9 +26,9 @@ export default class Bouquet extends LinkedArray implements Array<FA> {
       unsorted = false;
       let current = this.head;
       while (current) {
-        let nextNode = current.next;
-        if(!nextNode) break;
-        
+        const nextNode = current.next;
+        if (!nextNode) break;
+
         if (parseInt(nextNode.element.freshness) < parseInt(current.element.freshness)) {
           const temp = current.element;
           current.element = nextNode.element;
@@ -37,7 +37,7 @@ export default class Bouquet extends LinkedArray implements Array<FA> {
           unsorted = true;
         }
 
-        current = current.next
+        current = current.next;
       }
     }
 
@@ -45,9 +45,10 @@ export default class Bouquet extends LinkedArray implements Array<FA> {
   }
 
   output(el = this.head) {
-    console.log(el.element);
+    // eslint-disable-next-line no-console
+    console.log(el?.element);
 
-    if (el.next) {
+    if (el?.next) {
       this.output(el.next);
     }
   }
@@ -56,24 +57,24 @@ export default class Bouquet extends LinkedArray implements Array<FA> {
     let total = 0;
     let node = this.head;
 
-    do {
+    while (node) {
       total += node.element.price;
       node = node.next;
-    } while (node);
+    }
 
     return total;
   }
 
-  getFlowerWithLength(min: number, max: number): FA[] {
+  getFlowersWithLength(min: number, max: number): FA[] {
     let node = this.head;
     const result = [];
     while (node) {
-      if (node.element instanceof Accessorie) { 
+      if (node.element instanceof Accessorie) {
         node = node.next;
         continue;
       }
       const length = node.element.len;
-      if (length <= max && length >= min)  {
+      if (length <= max && length >= min) {
         result.push(node.element);
       }
       node = node.next;

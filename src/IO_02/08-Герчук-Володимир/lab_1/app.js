@@ -9,7 +9,7 @@
 // Implementations' developer tools may provide access to private fields (V8 issue).
 // The decorators proposal gives tools for easy-to-use and controlled access to private fields.
 
-class Labochka {
+export class Labochka {
   static C = 1;
 
   /**
@@ -38,15 +38,15 @@ class Labochka {
         this._result += (i + j) / (i + Labochka.C);
       }
     }
+
+    return this._result;
   }
 
   get result() {
-    return this._result?.toFixed(4) || 'No result!';
+    return this._result?.toFixed(4) ?? 'No result!';
   }
 }
 
 const lb = new Labochka(1, 10, 123, 10);
 
-console.log(lb.result);
 lb.calc();
-console.log(lb.result);

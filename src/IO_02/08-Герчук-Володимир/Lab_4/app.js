@@ -4,7 +4,7 @@
 // private fields - 66%
 // static class fields - 70%
 
-class Main {
+export default class Main {
   static arr = [];
 
   /** Sorts in order of growth by scholarships */
@@ -55,6 +55,7 @@ class Student {
     this.university = 'KPI';
     this.rating = rating;
     this.group = group;
+
     Main.arr.push(this);
   }
 

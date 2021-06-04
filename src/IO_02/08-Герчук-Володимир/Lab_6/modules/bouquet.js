@@ -3,6 +3,9 @@
  * @module bouquet
  */
 
+const Flower = require('./Flower/flower');
+const Accessory = require('./accessory');
+const { readPossibleError, ArgumentError } = require('./Errors');
 /**
  * Checks if argument is integer.
  * @param {any} num
@@ -15,8 +18,12 @@ function isNum(num) {
 /**
  * Class representing a hole bouquet.
  */
-export default class Bouquet {
-  constructor(flowersArr) {
+module.exports = class Bouquet {
+  /**
+   * constructor for Bouquet class.
+   * @param {Array} flowersArr
+   */
+  constructor(flowersArr = []) {
     this.bouquet = flowersArr;
   }
 
@@ -25,9 +32,13 @@ export default class Bouquet {
    * @returns {Number} total price
    */
   getTotalPrice() {
-    return this.bouquet.reduce((acc, {
-      price
-    }) => acc + parseFloat(price), 0);
+    if (this.bouquet.length > 0) {
+      return this.bouquet.reduce((acc, {
+        price,
+      }) => acc + parseFloat(price), 0);
+    }
+
+    return 0;
   }
 
   /**
@@ -41,14 +52,30 @@ export default class Bouquet {
 
   /**
    * Filters the bouquet of flowers by the specified length interval.
-   * @param {Number} start beggining of the range.
-   * @param {Numebr} stop end of the range.
+   * @param {Number} start beggining of the range. - INCLUDED
+   * @param {Numebr} stop end of the range. - INCLUDED
    * @returns {Array} filtered array.
    */
-  filtertLen(start, stop) {
-    if (start < 0 || stop < 0 || start >= stop || !isNum(start) || !isNum(stop)) {
-      throw new Error('Invalid arguments');
-    }
-    return this.bouquet.filter(({ len }) => len >= start && len <= stop);
+  filterLen(start, stop) {
+    return readPossibleError(() => {
+      if (start < 0 || stop < 0 || start >= stop || !isNum(start) || !isNum(stop)) {
+        throw new ArgumentError('Invalid arguments given');
+      }
+
+      return this.bouquet.filter(({ len }) => len >= start && len <= stop);
+    });
   }
-}
+
+  /**
+   * @param {Object} flower flower that should be added
+   * @returns {Void}
+   */
+  append(item) {
+    readPossibleError(() => {
+      if (!(item instanceof Flower || item instanceof Accessory)) {
+        throw new ArgumentError('Wrong data type... 🌚');
+      }
+      this.bouquet.push(item);
+    });
+  }
+};

@@ -1,4 +1,4 @@
-import {jest} from '@jest/globals';
+import { jest } from '@jest/globals';
 import { Text } from './app';
 
 const template = 'First simple string Last...';
