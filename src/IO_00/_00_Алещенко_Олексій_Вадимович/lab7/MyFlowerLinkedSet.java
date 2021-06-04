@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MyFlowerSet implements Set<Flower> {
+public class MyFlowerLinkedSet implements Set<Flower> {
     private Node head;
     private int size;
 
@@ -17,17 +17,46 @@ public class MyFlowerSet implements Set<Flower> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
 
     @Override
     public boolean contains(Object o) {
+        /*Node current = head;
+        while (current != null) {
+            if (current.contains(o)) {
+                return true;
+            } else {
+                current = current.getNext();
+            }
+        }*/
+        for (Flower flower : this) {
+            if (flower.equals(o)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<Flower> iterator() {
+
+//        todo add bodies to methods of anonymous class
+        return new Iterator<Flower>() {
+            private Node current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public Flower next() {
+                Flower result = current.getFlower();
+                current = current.getNext();
+                return result;
+            }
+        };
     }
 
     @Override
@@ -37,8 +66,11 @@ public class MyFlowerSet implements Set<Flower> {
 
     @Override
     public boolean add(Flower flower) {
-        head = new Node(flower);
-        size++;
+        if (!contains(flower)) {
+            head = new Node(flower, head);
+            size++;
+            return true;
+        }
         return false;
     }
 

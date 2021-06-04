@@ -7,7 +7,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MyFlowerCollection implements List<Flower> {
+public class MyFlowerArrayList implements List<Flower> {
+    private final static int INITIAL_CAPACITY = 15;
+    private Flower[] flowers/* = new Flower[INITIAL_CAPACITY]*/;
+
+    public MyFlowerArrayList() {
+        flowers = new Flower[INITIAL_CAPACITY];
+    }
+
+    public MyFlowerArrayList(Flower flower) {
+        this();
+//        todo add realization of method "add"
+        add(flower);
+    }
+
+    public MyFlowerArrayList(Collection<? extends Flower> collection) {
+        flowers = new Flower[collection.size()];
+//        todo add realization of method "addAll"
+        addAll(collection);
+    }
+
     @Override
     public int size() {
         return 0;
